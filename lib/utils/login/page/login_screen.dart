@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +11,13 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _loginController=Get.put(LoginController());
-   // bool isCheckClick=false;
+    final _loginController = Get.put(LoginController());
+    // bool isCheckClick=false;
     return Scaffold(
       appBar: null,
-      backgroundColor:const Color(0xffF1F3F6),
-      body: Obx(()=> Container(
+      backgroundColor: const Color(0xffF1F3F6),
+      body: Obx(
+        () => Container(
           height: double.infinity,
           width: double.infinity,
           color: const Color(0xffF2F4FA),
@@ -23,35 +26,78 @@ class SignInScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: 200,
+                  height: 170,
                   width: double.infinity,
                   // color: Colors.white,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(60),
-                      // bottomLeft:Radius.circular(80),
-                    ),
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(60),
+                        // bottomLeft:Radius.circular(80),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 1,
+                            spreadRadius: 1,
+                            color: Colors.white70)
+                      ]),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 30, top: 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    padding: const EdgeInsets.only(left: 30, top: 30),
+                    child: Row(
                       children: [
-                        Text(
-                          'Welcome!',
-                          style: Theme.of(context).textTheme.headline5!.copyWith(
-                              fontSize: 28,
-                              color: AppColor.descriptionColor,
-                              fontWeight: FontWeight.w500),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Welcome!',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(
+                                      fontSize: 28,
+                                      color: AppColor.descriptionColor,
+                                      fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Sign in and get started',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.w500),
+                            )
+                          ],
                         ),
-                        Text(
-                          'Sign in and get started',
-                          style: Theme.of(context).textTheme.headline6!.copyWith(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w500),
-                        )
+                        const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 33, right: 5),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Image.asset(
+                              'asset/image/image_png/qr_code.png',
+                              width: 63,
+                              height: 63,
+                            ),
+                            // child: SvgPicture.asset(
+                            //   'assets/svg/scanQr.svg',
+                            //   width: 20,
+                            //   height: 20,
+                            //   color: Colors.black,
+                            // ),
+                          ),
+                          // Container(
+                          //   height:50,width: 50,
+                          //   decoration: BoxDecoration(
+                          //     color: Colors.red,
+                          //     borderRadius: BorderRadius.circular(15)
+                          //   ),
+                          // ),
+                        ),
                       ],
                     ),
                   ),
@@ -59,6 +105,7 @@ class SignInScreen extends StatelessWidget {
                 const SizedBox(
                   height: 60,
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: TextField(
@@ -84,7 +131,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 22),
                   child: TextField(
                     decoration: InputDecoration(
                       labelText: 'Enter your Password',
@@ -115,16 +162,15 @@ class SignInScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
-                        onTap:(){
+                        onTap: () {
                           //isCheckClick=
-                         if(_loginController.isCheckClick.value==false)
-                         {
-                       _loginController.isCheckClick.value=true;
-                         }
-                         else{
-                           _loginController.isCheckClick.value=false;
-                         }
-                          debugPrint('====Show debug  isCheckClick : ${_loginController.isCheckClick.value}');
+                          if (_loginController.isCheckClick.value == false) {
+                            _loginController.isCheckClick.value = true;
+                          } else {
+                            _loginController.isCheckClick.value = false;
+                          }
+                          debugPrint(
+                              '====Show debug  isCheckClick : ${_loginController.isCheckClick.value}');
                         },
                         child: Container(
                           height: 16,
@@ -132,9 +178,11 @@ class SignInScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: AppColor.buttonColor,
                               borderRadius: BorderRadius.circular(3)),
-                        child:_loginController.isCheckClick.value?const Center(
-                            child: Icon(Icons.check,size: 14.5,color: Colors.white)
-                        ):null,
+                          child: _loginController.isCheckClick.value
+                              ? const Center(
+                                  child: Icon(Icons.check,
+                                      size: 16, color: Colors.white))
+                              : null,
                         ),
                       ),
                       const SizedBox(
@@ -143,27 +191,38 @@ class SignInScreen extends StatelessWidget {
                       Center(
                         child: Text(
                           "Remember me",
-                          style: Theme.of(context).textTheme.headline6!.copyWith(
-                              color: AppColor.descriptionColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(
+                                  color: AppColor.descriptionColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
                         ),
                       ),
                       const Spacer(),
                       Center(
                         child: Text(
                           "Forgot Password",
-                          style: Theme.of(context).textTheme.headline6!.copyWith(
-                              color: AppColor.descriptionColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(
+                                  color: AppColor.descriptionColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],
                   ),
                 ),
+
+                const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                  ),
                   child: Container(
                     height: 55,
                     width: double.infinity,
@@ -185,7 +244,9 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(
+                    top: 15,
+                  ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -193,24 +254,34 @@ class SignInScreen extends StatelessWidget {
                       Center(
                         child: Text(
                           "Don't have an account ? ",
-                          style: Theme.of(context).textTheme.headline6!.copyWith(
-                            fontSize: 16,
-                              color: AppColor.descriptionColor,
-                              fontWeight: FontWeight.w500),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(
+                                  fontSize: 16,
+                                  color: AppColor.descriptionColor,
+                                  fontWeight: FontWeight.w500),
                         ),
                       ),
                       Center(
                         child: Text(
                           "Register here",
-                          style: Theme.of(context).textTheme.headline6!.copyWith(
-                            fontSize: 16,
-                              color: AppColor.descriptionColor,
-                              fontWeight: FontWeight.w500),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(
+                                  fontSize: 16,
+                                  color: AppColor.descriptionColor,
+                                  fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],
                   ),
                 ),
+                // Container(height:50,width: 50,color: Colors.red,),
+                const Spacer(),
+
+                const Spacer(),
               ]),
           // child:
 
