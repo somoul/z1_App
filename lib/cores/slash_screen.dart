@@ -14,14 +14,10 @@ class _SlashScreenState extends State<SlashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      //onboardingScreen
-      // context.router.replaceNamed('dassbordScreen');signInScreen
-      //  context.router.replaceNamed('OnboardingScreen');
       context.navigateNamedTo('onboardingScreen');
-      // context.navigateNamedTo('signInScreen');
-      super.initState();
     });
-  } // SlashScreen({Key? key}) : super(key: key);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
