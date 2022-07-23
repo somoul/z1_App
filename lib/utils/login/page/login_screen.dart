@@ -271,20 +271,20 @@ class SignInScreen extends StatelessWidget {
                                 .headline6!
                                 .copyWith(
                                     color: AppColor.descriptionColor,
-                                    fontSize: 16,
+                                    fontSize: 16.5,
                                     fontWeight: FontWeight.w500),
                           ),
                         ),
                         const Spacer(),
                         Center(
-                          child: Text(
-                            "Forgot Password",
+                          child: Text('Pin code',
+                           // "Forgot Password",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline6!
                                 .copyWith(
                                     color: AppColor.descriptionColor,
-                                    fontSize: 16,
+                                    fontSize: 16.5,
                                     fontWeight: FontWeight.w500),
                           ),
                         ),
