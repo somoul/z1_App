@@ -13,11 +13,11 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(topRight: Radius.circular(50)),
+      borderRadius: const BorderRadius.only(),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 8.0,
-          sigmaY: 8.0,
+          sigmaX: 4.0,
+          sigmaY: 4.0,
         ),
         child: Stack(
           children: [
@@ -30,8 +30,10 @@ class AppCard extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    const Color(0xffffffff).withOpacity(0.2),
-                    // Colors.red
+                    // Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
+                    // Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
+                    const Color(0xffffffff).withOpacity(0.4),
+                    // // Colors.red
                     const Color(0xffffffff).withOpacity(0),
                   ],
                   // stops: const [
@@ -46,12 +48,11 @@ class AppCard extends StatelessWidget {
                 children: [
                   Text(
                     title ?? '',
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         // fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontFamily: 'Monoton',
-                        fontSize: 15),
-                    maxLines: 2,
+                        fontFamily: 'Poppins',
+                        fontSize: 18),
                   ),
 
                   // Theme.of(context).textTheme.bodyMedium!.copyWith(

@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:z1_app/configs/app_constant.dart';
-import 'package:z1_app/modules/home.dart';
 
 import 'home/app_card.dart';
 
@@ -31,8 +30,11 @@ class _TestComponentState extends State<TestComponent> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                    'https://cdn.wallpapersafari.com/1/39/VXsxcb.png'
+                    // 'https://images.unsplash.com/photo-1602947605863-d464e14f06ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBsaWdodHxlbnwwfHwwfHw%3D&w=1000&q=80'
+                    // 'https://wallpaperaccess.com/full/1567836.jpg'
+                    // 'https://cdn.wallpapersafari.com/1/39/VXsxcb.png'
                     // 'https://wallpaperaccess.com/full/2454622.jpg'
+                    'https://images.wallpapersden.com/image/download/blue-background-geometric-abstract_a2hrZ2mUmZqaraWkpJRmbmdlrWZlbWU.jpg'
                     // 'https://static.vecteezy.com/system/resources/previews/001/882/531/original/dark-blue-technology-background-free-vector.jpg'
                     // 'https://i.pinimg.com/originals/f9/99/9e/f9999e908cbd186b43b050a667291402.jpg',
                     ),
@@ -66,7 +68,7 @@ class _TestComponentState extends State<TestComponent> {
                     child: GridView.builder(
                       padding: const EdgeInsets.only(
                         top: defaultPadding / 2,
-                        bottom: 80 + defaultPadding,
+                        bottom: 100 + defaultPadding,
                       ),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -78,17 +80,32 @@ class _TestComponentState extends State<TestComponent> {
                       itemBuilder: (BuildContext context, int index) =>
                           GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => MyHomePage(
-                                    index: index,
-                                  )),
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              backgroundColor: Colors.transparent,
+                              child: Container(
+                                height: 200,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.5),
+                                  borderRadius:
+                                      BorderRadius.circular(defaultRadius * 2),
+                                ),
+                              ),
                             ),
                           );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: ((context) => MyHomePage(
+                          //           index: index,
+                          //         )),
+                          //   ),
+                          // );
                         },
-                        child: AppCard(
-                          title: 'Avocado ${index + 1}',
+                        child: const AppCard(
+                          title: 'Avocado',
                         ),
                       ),
                     ),
@@ -103,17 +120,17 @@ class _TestComponentState extends State<TestComponent> {
             child: ClipRRect(
               child: BackdropFilter(
                 filter: ImageFilter.blur(
-                  sigmaX: 8.0,
-                  sigmaY: 8.0,
+                  sigmaX: 1.0,
+                  sigmaY: 1.0,
                 ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   // height: 80,
                   decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.5),
                     borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(defaultRadius),
-                      topRight: Radius.circular(defaultRadius),
+                      topLeft: Radius.circular(defaultRadius * 2),
+                      topRight: Radius.circular(defaultRadius * 2),
                     ),
                   ),
                   // alignment: Alignment.center,
@@ -127,8 +144,9 @@ class _TestComponentState extends State<TestComponent> {
                         listNav.length,
                         (index) => GestureDetector(
                           onTap: () {
-                            selectedindex = index;
-                            setState(() {});
+                            setState(() {
+                              selectedindex = index;
+                            });
                           },
                           child: NavigationItem(
                             icon: listNav[index],
@@ -178,7 +196,7 @@ class NavigationItem extends StatelessWidget {
             ? const [
                 BoxShadow(
                   color: Colors.white54,
-                  spreadRadius: 0.1,
+                  spreadRadius: 4,
                   blurRadius: 10,
                 ),
               ]
