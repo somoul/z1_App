@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 // import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import '../configs/auto_route/auto_route.gr.dart';
+
+import '../configs/router/auto_route.gr.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
             // bottomNavigationBar: ConvexAppBar(
             //   backgroundColor:const Color.fromARGB(255, 64, 172, 179),
-             
+
             //   //top: 2,
             //   //style: TabStyle.react,
             //   items: const [

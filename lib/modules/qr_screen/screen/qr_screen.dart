@@ -29,7 +29,7 @@ class _QrScreenState extends State<QrScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
+          children: const [
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceAround,
             //   children: [
@@ -154,7 +154,6 @@ class _QrScreenState extends State<QrScreen> {
             //     ],
             //   ),
             // )
-          
           ],
         ),
       ),

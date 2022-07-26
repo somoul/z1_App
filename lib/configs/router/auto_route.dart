@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:z1_app/widgets/test_component.dart';
 // import 'package:z1_web_view_app/modules/qr_screen/screen/qr_screen.dart';
 
-import '../../cores/slash_screen.dart';
+import '../../cores/splash_screen.dart';
 import '../../cores/walk_though/page/onborading_screen.dart';
 import '../../modules/bottom_bar.dart';
 import '../../modules/dassbord/dassbord_screen.dart';
@@ -15,9 +16,14 @@ import '../../utils/login/page/login_screen.dart';
   routes: <AutoRoute>[
     //OnboardingScreen
     AutoRoute(
+      path: "/test",
+      page: TestComponent,
+      initial: true,
+    ),
+    AutoRoute(
       path: "/slashScreen",
-      page: SlashScreen,
-       initial: true,
+      page: SplashScreen,
+      // initial: true,
     ),
     AutoRoute(path: "signInScreen", page: SignInScreen, name: 'SignInScreen'),
     CustomRoute(
