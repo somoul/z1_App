@@ -1,5 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors, unrelated_type_equality_checks
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -276,16 +277,22 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Center(
-                          child: Text('Pin code',
-                           // "Forgot Password",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(
-                                    color: AppColor.descriptionColor,
-                                    fontSize: 16.5,
-                                    fontWeight: FontWeight.w500),
+                        GestureDetector(
+                          onTap: () {
+                            context.navigateNamedTo('/test');
+                          },
+                          child: Center(
+                            child: Text(
+                              'Pin code',
+                              // "Forgot Password",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(
+                                      color: AppColor.descriptionColor,
+                                      fontSize: 16.5,
+                                      fontWeight: FontWeight.w500),
+                            ),
                           ),
                         ),
                       ],
@@ -312,6 +319,13 @@ class SignInScreen extends StatelessWidget {
                                 false
                             : _loginController.isObscureTextPassword.value =
                                 true;
+
+                        if (_loginController.isObscureTextPassword.value ==
+                                false &&
+                            _loginController.isObscureTextEmail.value ==
+                                false) {
+                          context.navigateNamedTo('/test');
+                        } else {}
                       },
                       child: Container(
                         height: 55,

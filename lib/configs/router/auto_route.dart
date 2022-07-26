@@ -15,21 +15,22 @@ import '../../utils/login/page/login_screen.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     //OnboardingScreen
-    AutoRoute(
-      path: "/test",
-      page: TestComponent,
-      initial: true,
-    ),
+   
     AutoRoute(
       path: "/slashScreen",
       page: SplashScreen,
-      // initial: true,
+     initial: true,
     ),
     AutoRoute(path: "signInScreen", page: SignInScreen, name: 'SignInScreen'),
     CustomRoute(
       page: QrScreen,
       path: 'qrscreen',
       // initial: true,
+    ),
+     AutoRoute(
+      path: "/test",
+      page: TestComponent,
+     // initial: true,
     ),
     AutoRoute(
         path: "onboardingScreen",
