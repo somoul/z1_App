@@ -1,10 +1,11 @@
+// ignore_for_file: prefer_if_null_operators
+
 import 'package:flutter/material.dart';
+import 'package:z1_app/utils/app_color/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String? title;
-  final Color?colors;
-  // final double?height;
-  // final double?width;
+  final Color? colors;
   final EdgeInsetsGeometry? padding;
   final GestureTapCallback? onTap;
   const CustomButton({
@@ -19,32 +20,25 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return GestureDetector(
-     onTap: (){
-       onTap!();
-     },
-     child: Container(
-     //  height:height?? 50,
-      //  width:width??double.infinity,
-       decoration: BoxDecoration(
-      
-         borderRadius: BorderRadius.circular(10),
-         border: Border.all(
-           width: 1.05,
-           color: Theme.of(context).canvasColor,
-         ),
-         color: Colors.transparent,
-       ),
-       child: Center(
-         child: Padding(
-           padding: padding??const EdgeInsets.only(left: 0),
-           child: Text(
-             title ?? '',
-             style:const TextStyle(color:Colors.white,fontSize: 16 )),
-         )
-       ),
-     ),
-   );
-  
+    return Center(
+        child: Padding(
+            padding: padding ?? const EdgeInsets.only(left: 0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: colors != null ? colors : AppColor.buttonColor,
+                  padding: padding != null
+                      ? padding
+                      : const EdgeInsets.only(left: 18, right: 18),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      side: const BorderSide(color: Colors.white24)),
+                  textStyle: const TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold)),
+              child: Text(title ?? '',
+                  style: const TextStyle(color: Colors.white, fontSize: 16)),
+              onPressed: () {
+                onTap!();
+              },
+            )));
   }
 }

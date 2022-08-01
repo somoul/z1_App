@@ -118,7 +118,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     //  LocalData.storeBool('onboarding', true);
                                     // context.router
                                     //     .replaceNamed('dassbordScreen');
-                                        context.navigateNamedTo('signInScreen'); 
+                                       // context.navigateNamedTo('signInScreen'); 
+                                        context.navigateNamedTo('loginQrCodeScreen'); 
                                   },
                                   child: const Text(
                                     'Skip',
@@ -150,7 +151,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       // LocalData.storeBool('onboarding', true);
                                       // context.router
                                       //     .replaceNamed('dassbordScreen');
-                                          context.navigateNamedTo('signInScreen'); 
+                                         // context.navigateNamedTo('signInScreen'); 
+                                          context.navigateNamedTo('loginQrCodeScreen'); 
                                     },
                                   ),
                                 ),
@@ -258,6 +260,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             currentIndex != onboardingList.length - 1
                                 ? TextButton(
                                     onPressed: () {
+                                       context.navigateNamedTo('loginQrCodeScreen'); 
                                       //  LocalData.storeBool('onboarding', true);
                                       // context.router
                                       //     .replaceNamed('dassbordScreen');
@@ -284,8 +287,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                         onPressed: () {
                                           // LocalData.storeBool('onboarding', true);
                                           // context.router
-                                          //     .replaceNamed('dassbordScreen');
-                                              context.navigateNamedTo('signInScreen'); 
+                                          //     .replaceNamed('dassbordScreen');//loginQrCodeScreen
+                                               //context.navigateNamedTo('signInScreen'); 
+                                              context.navigateNamedTo('loginQrCodeScreen'); 
                                         },
                                       ),
                                     ),

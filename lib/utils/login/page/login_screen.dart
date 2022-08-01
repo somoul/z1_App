@@ -1,6 +1,7 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors, unrelated_type_equality_checks
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height: 170,
+                    height:kIsWeb?140: 170,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                         color: Colors.white,
@@ -77,12 +78,15 @@ class SignInScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          const Spacer(),
+                          const Spacer(),//scanqrcodesceen
                           Padding(
                             padding:
-                                const EdgeInsets.only(bottom: 33, right: 5),
+                                const EdgeInsets.only(bottom:kIsWeb?50: 33, right: 5,),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                 context.navigateNamedTo('loginQrCodeScreen'); 
+                                //  context.navigateNamedTo('scanqrcodesceen');
+                              },
                               child: Image.asset(
                                 'asset/image/image_png/qr_code.png',
                                 width: 63,

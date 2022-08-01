@@ -25,7 +25,7 @@ class _QrScreenState extends State<QrScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    //double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Column(

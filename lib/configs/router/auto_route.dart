@@ -9,17 +9,18 @@ import '../../modules/dassbord/dassbord_screen.dart';
 import '../../modules/profile/profile_screen.dart';
 import '../../modules/qr_screen/screen/qr_screen.dart';
 import '../../modules/scan_qp_code/scan_qr_code_screen.dart';
+import '../../utils/login/page/login_qrcode_screen.dart';
 import '../../utils/login/page/login_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     //OnboardingScreen
-   
+
     AutoRoute(
       path: "/slashScreen",
       page: SplashScreen,
-     initial: true,
+      initial: true,
     ),
     AutoRoute(path: "signInScreen", page: SignInScreen, name: 'SignInScreen'),
     CustomRoute(
@@ -27,11 +28,15 @@ import '../../utils/login/page/login_screen.dart';
       path: 'qrscreen',
       // initial: true,
     ),
-     AutoRoute(
+    AutoRoute(
       path: "/test",
       page: TestComponent,
-     // initial: true,
+      // initial: true,
     ),
+    AutoRoute(
+        path: "loginQrCodeScreen",
+        page: LoginQrCodeScreen,
+        name: 'LoginQrCodeScreen'),
     AutoRoute(
         path: "onboardingScreen",
         page: OnboardingScreen,
