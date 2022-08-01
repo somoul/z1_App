@@ -35,63 +35,89 @@ class LoginQrCodeScreen extends StatelessWidget {
                   child: GestureDetector(
                       onTap: () {
                         debugPrint('=======Show test SiginScreen===');
-            
-                       // context.navigateNamedTo('signInScreen');
-                        //cameraController.dispose();
-                        // showDialog(
-                        //     barrierDismissible: false,
-                        //     context: context,
-                        //     builder: (BuildContext context) {
-                        //       return Column(
-                        //         mainAxisAlignment: MainAxisAlignment.start,
-                        //         crossAxisAlignment: CrossAxisAlignment.end,
-                        //         children: [
-                        //           Dialog(
-                        //             shape: RoundedRectangleBorder(
-                        //                 borderRadius: BorderRadius.circular(
-                        //                     20.0)), //this right here
-                        //             child: Container(
-                        //               height: 100,
-                        //               child: Padding(
-                        //                 padding: const EdgeInsets.all(12.0),
-                        //                 child: Column(
-                        //                   mainAxisAlignment:
-                        //                       MainAxisAlignment.start,
-                        //                   crossAxisAlignment:
-                        //                       CrossAxisAlignment.start,
-                        //                   children: [
-                        //                     Text('one'),
-                        //                     const Divider(
-                        //                       height: 0,
-                        //                       thickness: 0,
-                        //                       color: Colors.grey,
-                        //                     ),
-                        //                     Text('two'),
-                        //                     // TextField(
-                        //                     //   decoration: InputDecoration(
-                        //                     //       border: InputBorder.none,
-                        //                     //       hintText: 'What do you want to remember?'),
-                        //                     // ),
-                        //                     // SizedBox(
-                        //                     //   width: 320.0,
-                        //                     //   child: RaisedButton(
-                        //                     //     onPressed: () {},
-                        //                     //     child: Text(
-                        //                     //       "Save",
-                        //                     //       style: TextStyle(
-                        //                     //           color: Colors.white),
-                        //                     //     ),
-                        //                     //     color: const Color(0xFF1BC0C5),
-                        //                     //   ),
-                        //                     // )
-                        //                   ],
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       );
-                        //     });
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: const EdgeInsets.only(
+                                    left:kIsWeb? 240:240, right: 25, bottom:kIsWeb? 720:690, top: 50),
+                                child: Container(
+                                  height: 10,
+                                  width: 10,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white38,
+                                      borderRadius: BorderRadius.circular(15),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            color: Colors.blueAccent,
+                                            blurRadius: 0.2,
+                                            spreadRadius: 0.2)
+                                      ]),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          cameraController.dispose();
+                                          context
+                                              .navigateNamedTo('signInScreen');
+                                          context.popRoute();
+
+                                        },
+                                        child: Text(
+                                          'Login',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6!
+                                              .copyWith(
+                                                  fontSize:kIsWeb?15 :17,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      const Divider(
+                                        height: 10,
+                                        thickness: 3,
+                                        // indent: 20,
+                                        //endIndent: 0,
+                                        color: Colors.black,
+                                      ),
+                                      const SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        'Pincode',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6!
+                                            .copyWith(
+                                                fontSize:kIsWeb?15 : 17,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                              // PopupMenuButton(
+                              //     itemBuilder: (context) => [
+
+                              //          const
+                              //          PopupMenuItem(
+                              //             value: 1,
+                              //             child: Text("First"),
+                              //           ),
+                              //          const PopupMenuItem(
+                              //             value: 2,
+                              //             child: Text("Second"),
+                              //           )
+                              //         ]);
+                            });
                       },
                       child: const Icon(
                         Icons.more_vert,
@@ -107,25 +133,28 @@ class LoginQrCodeScreen extends StatelessWidget {
 
                   //Text('Login')
                   ),
+
               Center(
                 child: SizedBox(
-                  height:// kIsWeb ? 248 :
-                   248.3,
+                  height: // kIsWeb ? 248 :
+                      248.3,
                   width: //kIsWeb ? 260 :
-                   260.5,
+                      260.5,
                   child: MobileScanner(
                     allowDuplicates: false,
                     controller: cameraController,
                     onDetect: (barcode, args) {
                       // scanQrController.linkScranQRCode.value =
                       //     barcode.rawValue!;
-                      cameraController.dispose();
+                      //cameraController.dispose();
+
                       debugPrint('Barcode found! 111 : ${barcode.rawValue!}');
+                       barcode.rawValue!.isNotEmpty? context.navigateNamedTo('/test'):Container();
                       Timer(
                         const Duration(seconds: 1),
                         () {
                           // context.router.navigateBack();
-                          // cameraController.dispose();
+                       barcode.rawValue!.isNotEmpty?  cameraController.dispose():Container();
                         },
                       );
                     },
@@ -138,8 +167,11 @@ class LoginQrCodeScreen extends StatelessWidget {
               Positioned(
                 left: 15,
                 right: 15,
-                top:kIsWeb?205:Platform.isIOS?215:
-                170,
+                top: kIsWeb
+                    ? 205
+                    : Platform.isIOS
+                        ? 215
+                        : 170,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -176,8 +208,11 @@ class LoginQrCodeScreen extends StatelessWidget {
               Positioned(
                 left: 0,
                 right: 0,
-                bottom:kIsWeb?150:Platform.isIOS? 150:
-                100,
+                bottom: kIsWeb
+                    ? 150
+                    : Platform.isIOS
+                        ? 150
+                        : 100,
                 child: Column(
                   children: [
                     GestureDetector(
@@ -287,10 +322,16 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
           child: SizedBox(
             // width: scanArea + 56.5,
             // height: scanArea + 47.09,
-             width:kIsWeb?scanArea + 58.5:Platform.isIOS? scanArea- 55:
-             scanArea + 56.5,
-            height:kIsWeb?scanArea + 47.5:Platform.isIOS? scanArea -65: 
-            scanArea + 47.09,
+            width: kIsWeb
+                ? scanArea + 58.5
+                : Platform.isIOS
+                    ? scanArea - 55
+                    : scanArea + 56.5,
+            height: kIsWeb
+                ? scanArea + 47.5
+                : Platform.isIOS
+                    ? scanArea - 65
+                    : scanArea + 47.09,
           ),
         ),
       ),
@@ -302,7 +343,7 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
 class BorderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-  const width = 4.7;
+    const width = 4.7;
 
     const radius = 13.0;
     const tRadius = 3 * radius;
