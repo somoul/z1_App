@@ -11,6 +11,7 @@ import '../../modules/qr_screen/screen/qr_screen.dart';
 import '../../modules/scan_qp_code/scan_qr_code_screen.dart';
 import '../../utils/login/page/login_qrcode_screen.dart';
 import '../../utils/login/page/login_screen.dart';
+import '../../utils/pincode/page/pincode_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -21,8 +22,10 @@ import '../../utils/login/page/login_screen.dart';
       path: "/slashScreen",
       page: SplashScreen,
       initial: true,
-    ),
+    ),//PinCodeScreen
     AutoRoute(path: "signInScreen", page: SignInScreen, name: 'SignInScreen'),
+     AutoRoute(path: "pinCodeScreen", page: PinCodeScreen, name: 'PinCodeScreen'),
+   
     CustomRoute(
       page: QrScreen,
       path: 'qrscreen',

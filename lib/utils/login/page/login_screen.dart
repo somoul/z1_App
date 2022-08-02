@@ -21,7 +21,7 @@ class SignInScreen extends StatelessWidget {
     final loginController = Get.put(LoginController());
 
     final cameraController = MobileScannerController();
-     cameraController.dispose();
+    cameraController.dispose();
     return Scaffold(
       appBar: null,
       backgroundColor: const Color(0xffF1F3F6),
@@ -90,10 +90,13 @@ class SignInScreen extends StatelessWidget {
                             ),
                             child: GestureDetector(
                               onTap: () {
-                                context.navigateNamedTo('loginQrCodeScreen'); 
+                                cameraController.start();
+                                cameraController.switchCamera();
+                                //context.navigateNamedTo('loginQrCodeScreen');
+                                context.navigateBack();
                                 loginController.linkScranQRCode.value = '';
-                               // context.navigateBack(); 
-                               // context.navigateNamedTo('loginQrCodeScreen');
+                                // context.navigateBack();
+                                // context.navigateNamedTo('loginQrCodeScreen');
                                 //  context.navigateNamedTo('scanqrcodesceen');
                               },
                               child: Image.asset(
@@ -292,7 +295,8 @@ class SignInScreen extends StatelessWidget {
                         const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            context.navigateNamedTo('/test');
+                            context.navigateNamedTo('pinCodeScreen');
+                            //context.navigateNamedTo('/test');
                           },
                           child: Center(
                             child: Text(

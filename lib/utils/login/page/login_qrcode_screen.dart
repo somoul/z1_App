@@ -23,7 +23,8 @@ class LoginQrCodeScreen extends StatelessWidget {
     final cameraController = MobileScannerController();
     bool? isFlashOn = false;
     debugPrint('====== Show cameraController :$cameraController====');
-    
+    cameraController.start();
+    cameraController.switchCamera();
     return Scaffold(
         appBar: null,
         backgroundColor: Colors.blueAccent.withOpacity(0.5),
@@ -64,7 +65,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       GestureDetector(
-                                        onTap: () {
+                                        onTap: () {//pinCodeScreen
                                           // cameraController.dispose();
                                           context
                                               .navigateNamedTo('signInScreen');
@@ -94,15 +95,22 @@ class LoginQrCodeScreen extends StatelessWidget {
                                       const SizedBox(
                                         height: 3,
                                       ),
-                                      Text(
-                                        'Pincode',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline6!
-                                            .copyWith(
-                                                fontSize: kIsWeb ? 15 : 17,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500),
+                                      GestureDetector(
+                                        onTap: (){
+                                            context
+                                              .navigateNamedTo('pinCodeScreen');
+                                          context.popRoute();
+                                        },
+                                        child: Text(
+                                          'Pincode',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6!
+                                              .copyWith(
+                                                  fontSize: kIsWeb ? 15 : 17,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500),
+                                        ),
                                       )
                                     ],
                                   ),
