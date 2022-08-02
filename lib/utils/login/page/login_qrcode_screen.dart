@@ -1,6 +1,4 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
-
-import 'dart:async';
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
