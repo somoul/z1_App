@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:z1_app/configs/app_constant.dart';
 
 import 'home/app_card.dart';
@@ -17,6 +18,8 @@ class _TestComponentState extends State<TestComponent> {
   int selectedindex = 1;
   @override
   Widget build(BuildContext context) {
+    final cameraController = MobileScannerController();
+     cameraController.dispose();
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,

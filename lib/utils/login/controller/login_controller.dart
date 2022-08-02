@@ -8,4 +8,5 @@ class LoginController extends GetxController {
   final passWordTextEditingController = ''.obs;
 
   final isObscureTextPassword = false.obs;
+  final linkScranQRCode=''.obs;
 }

@@ -6,8 +6,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+
+import '../controller/login_controller.dart';
 // import 'package:mobile_scanner/mobile_scanner.dart';
 // import 'package:qr_code_scanner/qr_code_scanner.dart';
 // import 'package:z1_app/widgets/custom_buttom.dart';
@@ -17,11 +20,12 @@ class LoginQrCodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final scanQrController = Get.put(ScanQrController());
+    final loginController = Get.put(LoginController());
     QRViewController? _qrViewController;
     final cameraController = MobileScannerController();
     bool? isFlashOn = false;
-
+    debugPrint('====== Show cameraController :$cameraController====');
+    
     return Scaffold(
         appBar: null,
         backgroundColor: Colors.blueAccent.withOpacity(0.5),
@@ -40,7 +44,10 @@ class LoginQrCodeScreen extends StatelessWidget {
                             builder: (context) {
                               return Padding(
                                 padding: const EdgeInsets.only(
-                                    left:kIsWeb? 240:240, right: 25, bottom:kIsWeb? 720:690, top: 50),
+                                    left: kIsWeb ? 240 : 240,
+                                    right: 25,
+                                    bottom: kIsWeb ? 720 : 690,
+                                    top: 50),
                                 child: Container(
                                   height: 10,
                                   width: 10,
@@ -60,11 +67,10 @@ class LoginQrCodeScreen extends StatelessWidget {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          cameraController.dispose();
+                                          // cameraController.dispose();
                                           context
                                               .navigateNamedTo('signInScreen');
                                           context.popRoute();
-
                                         },
                                         child: Text(
                                           'Login',
@@ -72,7 +78,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                               .textTheme
                                               .headline6!
                                               .copyWith(
-                                                  fontSize:kIsWeb?15 :17,
+                                                  fontSize: kIsWeb ? 15 : 17,
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w500),
                                         ),
@@ -96,7 +102,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                             .textTheme
                                             .headline6!
                                             .copyWith(
-                                                fontSize:kIsWeb?15 : 17,
+                                                fontSize: kIsWeb ? 15 : 17,
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w500),
                                       )
@@ -104,19 +110,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                   ),
                                 ),
                               );
-                              // PopupMenuButton(
-                              //     itemBuilder: (context) => [
-
-                              //          const
-                              //          PopupMenuItem(
-                              //             value: 1,
-                              //             child: Text("First"),
-                              //           ),
-                              //          const PopupMenuItem(
-                              //             value: 2,
-                              //             child: Text("Second"),
-                              //           )
-                              //         ]);
+                           
                             });
                       },
                       child: const Icon(
@@ -124,14 +118,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                         color: Colors.white,
                         size: 35,
                       ))
-                  //  CustomButton(
-                  //   title: 'Login',
-                  //   onTap: () {
-                  //     context.navigateNamedTo('signInScreen');
-                  //   },
-                  // )
-
-                  //Text('Login')
+                  
                   ),
 
               Center(
@@ -144,19 +131,22 @@ class LoginQrCodeScreen extends StatelessWidget {
                     allowDuplicates: false,
                     controller: cameraController,
                     onDetect: (barcode, args) {
-                      // scanQrController.linkScranQRCode.value =
-                      //     barcode.rawValue!;
-                      //cameraController.dispose();
+                      loginController.linkScranQRCode.value = barcode.rawValue!;
+                   
 
                       debugPrint('Barcode found! 111 : ${barcode.rawValue!}');
-                       barcode.rawValue!.isNotEmpty? context.navigateNamedTo('/test'):Container();
-                      Timer(
-                        const Duration(seconds: 1),
-                        () {
-                          // context.router.navigateBack();
-                       barcode.rawValue!.isNotEmpty?  cameraController.dispose():Container();
-                        },
-                      );
+                      loginController.linkScranQRCode.value.isNotEmpty
+                          ? context.navigateNamedTo('/test')
+                          : Container();
+                      // Timer(
+                      //   const Duration(seconds: 1),
+                      //   () {
+                      //     // context.router.navigateBack();
+                      //     loginController.linkScranQRCode.value.isNotEmpty
+                      //         ? cameraController.dispose()
+                      //         : Container();
+                      //   },
+                      // );
                     },
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../configs/app_constant.dart';
 
 class AppCard extends StatelessWidget {
@@ -12,6 +13,8 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cameraController = MobileScannerController();
+     cameraController.dispose();
     return ClipRRect(
       borderRadius: const BorderRadius.only(),
       child: BackdropFilter(

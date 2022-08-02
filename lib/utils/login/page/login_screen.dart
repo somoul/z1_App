@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../app_color/app_colors.dart';
 import '../controller/login_controller.dart';
@@ -17,7 +18,10 @@ class SignInScreen extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final _emailTextEditingController = TextEditingController();
     final _passwordTextEditingController = TextEditingController();
+    final loginController = Get.put(LoginController());
 
+    final cameraController = MobileScannerController();
+     cameraController.dispose();
     return Scaffold(
       appBar: null,
       backgroundColor: const Color(0xffF1F3F6),
@@ -33,7 +37,7 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height:kIsWeb?140: 170,
+                    height: kIsWeb ? 140 : 170,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                         color: Colors.white,
@@ -78,13 +82,18 @@ class SignInScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          const Spacer(),//scanqrcodesceen
+                          const Spacer(), //scanqrcodesceen
                           Padding(
-                            padding:
-                                const EdgeInsets.only(bottom:kIsWeb?50: 33, right: 5,),
+                            padding: const EdgeInsets.only(
+                              bottom: kIsWeb ? 50 : 33,
+                              right: 5,
+                            ),
                             child: GestureDetector(
                               onTap: () {
-                                 context.navigateNamedTo('loginQrCodeScreen'); 
+                                context.navigateNamedTo('loginQrCodeScreen'); 
+                                loginController.linkScranQRCode.value = '';
+                               // context.navigateBack(); 
+                               // context.navigateNamedTo('loginQrCodeScreen');
                                 //  context.navigateNamedTo('scanqrcodesceen');
                               },
                               child: Image.asset(
