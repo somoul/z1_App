@@ -33,11 +33,11 @@ class _TestComponentState extends State<TestComponent> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                    // 'https://images.unsplash.com/photo-1602947605863-d464e14f06ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBsaWdodHxlbnwwfHwwfHw%3D&w=1000&q=80'
+                   'https://images.unsplash.com/photo-1602947605863-d464e14f06ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBsaWdodHxlbnwwfHwwfHw%3D&w=1000&q=80'
                     // 'https://wallpaperaccess.com/full/1567836.jpg'
                     // 'https://cdn.wallpapersafari.com/1/39/VXsxcb.png'
                     // 'https://wallpaperaccess.com/full/2454622.jpg'
-                    'https://images.wallpapersden.com/image/download/blue-background-geometric-abstract_a2hrZ2mUmZqaraWkpJRmbmdlrWZlbWU.jpg'
+                    //'https://images.wallpapersden.com/image/download/blue-background-geometric-abstract_a2hrZ2mUmZqaraWkpJRmbmdlrWZlbWU.jpg'
                     // 'https://static.vecteezy.com/system/resources/previews/001/882/531/original/dark-blue-technology-background-free-vector.jpg'
                     // 'https://i.pinimg.com/originals/f9/99/9e/f9999e908cbd186b43b050a667291402.jpg',
                     ),
@@ -76,7 +76,7 @@ class _TestComponentState extends State<TestComponent> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
+                        mainAxisSpacing: 10,childAspectRatio: 0.8,
                         crossAxisCount: 2,
                       ),
                       itemCount: 20,
@@ -91,7 +91,7 @@ class _TestComponentState extends State<TestComponent> {
                                 height: 200,
                                 width: 200,
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.5),
+                                  color: Colors.white,//.withOpacity(0.5),
                                   borderRadius:
                                       BorderRadius.circular(defaultRadius * 2),
                                 ),
