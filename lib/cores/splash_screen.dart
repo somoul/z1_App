@@ -29,18 +29,26 @@ class _SplashScreenState extends State<SplashScreen> {
         width: double.infinity,
         color: Colors.white,
         child: Column(
+         
           children: [
-          //  const Spacer(),
-            Center(
-                child:SvgPicture.asset('asset/image/image_png/z1_logo_512px.png')
-            //      Image.svg(,
-            //   height: 165,
-            //   width: 165,
-            // ) //Text('Show SlashScreen ')
-                ),
             const Spacer(),
+    
+            Padding(
+              padding: const EdgeInsets.only(top: 60),
+              child: Container(
+                height:200,
+                width: 200,
+              
+                  child:Image.asset('asset/image/image_png/z1_logo_px.png',width: 150,height: 150,)
+              //      Image.svg(,
+              //   height: 165,
+              //   width: 165,
+              // ) //Text('Show SlashScreen ')
+                  ),
+            ),
+               const Spacer(),
             const Padding(
-              padding: EdgeInsets.only(bottom: 30),
+              padding: EdgeInsets.only(bottom: 100),
               child: CircularProgressIndicator(
                 value: null,
                 strokeWidth: 5.0,
