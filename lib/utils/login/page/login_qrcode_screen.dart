@@ -10,10 +10,6 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:z1_app/utils/app_color/app_colors.dart';
 
 import '../controller/login_controller.dart';
-// import 'package:mobile_scanner/mobile_scanner.dart';
-// import 'package:qr_code_scanner/qr_code_scanner.dart';
-// import 'package:z1_app/widgets/custom_buttom.dart';
-
 class LoginQrCodeScreen extends StatelessWidget {
   const LoginQrCodeScreen({Key? key}) : super(key: key);
 
@@ -29,7 +25,7 @@ class LoginQrCodeScreen extends StatelessWidget {
     return Scaffold(
         appBar: null,
         backgroundColor:AppColor.backgroundColor,
-        // Colors.blueAccent.withOpacity(0.8),
+    
         body: Center(
           child: Stack(
             children: [
@@ -89,8 +85,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                       const Divider(
                                         height: 10,
                                         thickness: 3,
-                                        // indent: 20,
-                                        //endIndent: 0,
+                                     
                                         color: Colors.black,
                                       ),
                                       const SizedBox(
@@ -145,15 +140,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                       loginController.linkScranQRCode.value.isNotEmpty
                           ? context.navigateNamedTo('/test')
                           : Container();
-                      // Timer(
-                      //   const Duration(seconds: 1),
-                      //   () {
-                      //     // context.router.navigateBack();
-                      //     loginController.linkScranQRCode.value.isNotEmpty
-                      //         ? cameraController.dispose()
-                      //         : Container();
-                      //   },
-                      // );
+                      
                     },
                   ),
                 ),
@@ -240,43 +227,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              // Positioned(
-              //     left: 20,
-              //     bottom: 50,
-              //     child: Obx(
-              //       () => GestureDetector(
-              //         onTap: () {
-              //           launchUrl(
-              //               Uri.parse(''
-              //                 //scanQrController.linkScranQRCode.value
-              //                 ));
-              //         },
-              //         child: RichText(
-              //           text: TextSpan(
-              //             text:
-              //                 scanQrController.linkScranQRCode.value.isNotEmpty
-              //                     ? 'link url : '
-              //                     : '',
-              //             style: const TextStyle(
-              //                 fontWeight: FontWeight.bold,
-              //                 fontSize: 14,
-              //                 color: Colors.white),
-              //             children: <TextSpan>[
-              //               TextSpan(
-              //                   text: scanQrController
-              //                           .linkScranQRCode.value.isNotEmpty
-              //                       ? scanQrController.linkScranQRCode.value
-              //                       : '',
-              //                   style: const TextStyle(
-              //                       fontWeight: FontWeight.bold,
-              //                       fontSize: 14,
-              //                       color: Colors.white)),
-              //             ],
-              //           ),
-              //         ),
-              //       ),
-              //     ))
-            ],
+           ],
           ),
         ));
   }

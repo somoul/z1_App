@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:z1_app/utils/app_color/app_colors.dart';
 
 import '../../../widgets/custom_buttom.dart';
 import '../../../widgets/onbording_screen/onbording_mobile_cart.dart';
@@ -59,7 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             height: 50,
                             width: 50,
                             // color: Colors.red,
-                            padding: const EdgeInsets.only(left: 10, top: 10),
+                            padding: const EdgeInsets.only(left: 10, top: 15),
                             child: IconButton(
                               onPressed: () {
                                 controller.animateToPage(currentIndex - 1,
@@ -68,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               },
                               icon: const Icon(Icons.arrow_back_ios),
                               color: Colors.white,
-                              iconSize: 25,
+                              iconSize: 24,
                             ),
                           ),
                     const SizedBox(
@@ -124,7 +125,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   child: const Text(
                                     'Skip',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 17),
+                                        color: Colors.white, fontSize: 19),
                                   ),
                                 )
                               : const SizedBox(),
@@ -159,13 +160,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                               : CustomButton(
                                   // height: 30,
-                                  padding: const EdgeInsets.only(
-                                    left: 19,
-                                    right: 19,
-                                    top: 5,
-                                    bottom: 5,
-                                  ),
-                                  colors: Colors.blueAccent,
+                                  // padding: const EdgeInsets.only(
+                                  //   left: 19,
+                                  //   right: 19,
+                                  //   top: 5,
+                                  //   bottom: 5,
+                                  // ),
+                                  //colors: Colors.blueAccent,
                                   onTap: () {
                                     controller.animateToPage(currentIndex + 1,
                                         duration:
@@ -194,7 +195,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ? Container(
                             height: 50,
                             width: 50,
-                            padding: const EdgeInsets.only(left: 10, top: 10),
+                            padding: const EdgeInsets.only(left: 15, top: 10),
                             child: IconButton(
                               onPressed: () {
                                 controller.animateToPage(currentIndex - 1,
@@ -203,8 +204,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               },
                               icon: Icon(Platform.isIOS
                                   ? Icons.arrow_back_ios
-                                  : Icons.arrow_back_ios),
-                              color: const Color(0xff50B8F6),
+                                  : Icons.arrow_back_ios,size: 28,),
+                              color: AppColor.textColor,
                             ),
                           )
                         : Container(
@@ -268,7 +269,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     child: const Text(
                                       'Skip',
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 24),
+                                          color: Colors.white, fontSize: 18.5),
                                     ),
                                   )
                                 : const SizedBox(),
@@ -295,8 +296,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     ),
                                   )
                                 : Container(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    width: 110,
+                                    padding: const EdgeInsets.only(right: 0),
+                                    width: 100,
                                     // height: 60,
                                     child: CustomButton(
                                       // height: 100,

@@ -28,18 +28,18 @@ class CustomOnboardMobileCard extends StatelessWidget {
               slidingBeginOffset: const Offset(0, 0),
               child: Text(
                 onboardingModel!.title!,
-                style:const TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.w600)
+                style: TextStyle(color:Colors.white.withOpacity(0.95),fontSize: 20,fontWeight:FontWeight.w600)
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             DelayedDisplay(
               delay: const Duration(milliseconds: 700),
               slidingBeginOffset: const Offset(0, 0),
               child: Text(
                 onboardingModel!.description!,
-                style: const TextStyle(color: Colors.white70,fontSize: 16,),
+                style:  TextStyle(color: Colors.white.withOpacity(0.85),fontSize: 16,),
                 textAlign: TextAlign.center,
               ),
             ),

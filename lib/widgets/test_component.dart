@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:z1_app/configs/app_constant.dart';
+import 'package:z1_app/utils/app_color/app_colors.dart';
 
 import 'home/app_card.dart';
 
@@ -21,7 +22,7 @@ class _TestComponentState extends State<TestComponent> {
     final cameraController = MobileScannerController();
      cameraController.dispose();
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor:AppColor.backgroundColor,// Colors.black,
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
@@ -29,19 +30,20 @@ class _TestComponentState extends State<TestComponent> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                   'https://images.unsplash.com/photo-1602947605863-d464e14f06ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBsaWdodHxlbnwwfHwwfHw%3D&w=1000&q=80'
-                    // 'https://wallpaperaccess.com/full/1567836.jpg'
-                    // 'https://cdn.wallpapersafari.com/1/39/VXsxcb.png'
-                    // 'https://wallpaperaccess.com/full/2454622.jpg'
-                    //'https://images.wallpapersden.com/image/download/blue-background-geometric-abstract_a2hrZ2mUmZqaraWkpJRmbmdlrWZlbWU.jpg'
-                    // 'https://static.vecteezy.com/system/resources/previews/001/882/531/original/dark-blue-technology-background-free-vector.jpg'
-                    // 'https://i.pinimg.com/originals/f9/99/9e/f9999e908cbd186b43b050a667291402.jpg',
-                    ),
-              ),
+            decoration:  BoxDecoration(
+              color: AppColor.backgroundColor,
+              // image: DecorationImage(
+              //   fit: BoxFit.cover,
+              //   image: NetworkImage(
+              //    //  'https://images.unsplash.com/photo-1602947605863-d464e14f06ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBsaWdodHxlbnwwfHwwfHw%3D&w=1000&q=80'
+              //        'https://wallpaperaccess.com/full/1567836.jpg'
+              //       // 'https://cdn.wallpapersafari.com/1/39/VXsxcb.png'
+              //       // 'https://wallpaperaccess.com/full/2454622.jpg'
+              //       //'https://images.wallpapersden.com/image/download/blue-background-geometric-abstract_a2hrZ2mUmZqaraWkpJRmbmdlrWZlbWU.jpg'
+              //       // 'https://static.vecteezy.com/system/resources/previews/001/882/531/original/dark-blue-technology-background-free-vector.jpg'
+              //       // 'https://i.pinimg.com/originals/f9/99/9e/f9999e908cbd186b43b050a667291402.jpg',
+              //       ),
+              // ),
             ),
           ),
 
@@ -130,7 +132,7 @@ class _TestComponentState extends State<TestComponent> {
                   width: MediaQuery.of(context).size.width,
                   // height: 80,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5),
+                    color:AppColor.buttonColor.withOpacity(0.8),// Colors.black.withOpacity(0.5),
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(defaultRadius * 2),
                       topRight: Radius.circular(defaultRadius * 2),
