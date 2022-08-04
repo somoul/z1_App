@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -26,16 +27,16 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: const Color(0xff3999B7),
+        color: Colors.white,
         child: Column(
           children: [
-            const Spacer(),
+          //  const Spacer(),
             Center(
-                child: Image.network(
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Vector-based_example.svg/588px-Vector-based_example.svg.png',
-              height: 165,
-              width: 165,
-            ) //Text('Show SlashScreen ')
+                child:SvgPicture.asset('asset/image/image_png/z1_logo_512px.png')
+            //      Image.svg(,
+            //   height: 165,
+            //   width: 165,
+            // ) //Text('Show SlashScreen ')
                 ),
             const Spacer(),
             const Padding(

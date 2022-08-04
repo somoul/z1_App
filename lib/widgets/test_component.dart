@@ -55,20 +55,20 @@ class _TestComponentState extends State<TestComponent> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hello Virak!',
-                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                  ),
-                  Text(
-                    'Welcome to webview app',
-                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                          fontWeight: FontWeight.w200,
-                          color: Colors.white,
-                        ),
-                  ),
+                  // Text(
+                  //   'Hello Virak!',
+                  //   style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                  //         fontWeight: FontWeight.w600,
+                  //         color: Colors.white,
+                  //       ),
+                  // ),
+                  // Text(
+                  //   'Welcome to webview app',
+                  //   style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                  //         fontWeight: FontWeight.w200,
+                  //         color: Colors.white,
+                  //       ),
+                  // ),
                   Expanded(
                     child: GridView.builder(
                       padding: const EdgeInsets.only(
