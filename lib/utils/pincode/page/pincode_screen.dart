@@ -60,7 +60,7 @@ class PinCodeScreen extends StatelessWidget {
                               _pinCodeController.time.value--;
                         } else {
                           _pinCodeController.numberLoginPassCode.value = 0;
-                          _pinCodeController.time.value = 10;
+                          _pinCodeController.time.value = 15;
                           timer.cancel();
                         }
 
