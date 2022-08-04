@@ -1,95 +1,143 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
+import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+import 'package:get/get.dart';
+import 'package:passcode_screen/circle.dart';
+import 'package:passcode_screen/passcode_screen.dart';
+import '../../app_color/app_colors.dart';
+import '../controller/pincode_controller.dart';
 
 class PinCodeScreen extends StatelessWidget {
   const PinCodeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final StreamController<bool> _verificationNotifier =
+        StreamController<bool>.broadcast();
+    // Timer? timer;
+    final _pinCodeController = Get.put(PinCodeController());
+    // int time = 30;
+    int numberLoginPassCode = 1;
+    // int numberTimmerDelayed = 30;
     return Scaffold(
-        appBar: null,
-        backgroundColor: Colors.blue,
-        body: ScreenLock(
-          correctString: '1234',
-          didCancelled: () {
-            context.navigateBack();
-          },
-          didUnlocked: () {
-            context.navigateNamedTo('/test');
-          },
-        ));
+      appBar: null,
+      backgroundColor: Colors.white,
+      body: Obx(
+        () => Stack(
+          children: [
+            PasscodeScreen(
+              title: Text(
+                'Enter your passcode',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold),
+              ),
+              passwordEnteredCallback: (pincode) {
+                debugPrint('======== show PinCode :$pincode===========');
+                if (pincode == '1234') {
+                  _verificationNotifier.add(true);
+                  context.navigateNamedTo('/test');
+                } else {
+                  _verificationNotifier.add(false);
+                  _pinCodeController.numberLoginPassCode.value =
+                      numberLoginPassCode++;
+
+                  debugPrint(
+                      'Show Number LoginPasscode : ${_pinCodeController.numberLoginPassCode.value}');
+                  if (_pinCodeController.numberLoginPassCode.value > 3) {
+                    numberLoginPassCode = 1;
+                    _pinCodeController.numberTimmerDelayed.value =
+                        _pinCodeController.time.value;
+                    Timer.periodic(
+                      const Duration(seconds: 1),
+                      (Timer timer) {
+                        if (_pinCodeController.time.value >= 0) {
+                          _pinCodeController.numberTimmerDelayed.value =
+                              _pinCodeController.time.value--;
+                        } else {
+                          _pinCodeController.numberLoginPassCode.value = 0;
+                          _pinCodeController.time.value = 10;
+                          timer.cancel();
+                        }
+
+                        debugPrint(
+                            ' ======= Show  time :${_pinCodeController.time.value - 1}====');
+
+                        debugPrint(
+                            ' ======= Show numberTimmerDelayed  :${_pinCodeController.numberTimmerDelayed.value}====');
+                      },
+                    );
+                  }
+                }
+              },
+              circleUIConfig: const CircleUIConfig(
+                  borderColor: Colors.white,
+                  fillColor: Colors.white,
+                  circleSize: 22),
+              cancelCallback: () {
+                context.navigateBack();
+              },
+              cancelButton: Text(
+                'Cancel',
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                    color: Colors.white,
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold),
+              ),
+              deleteButton: Text(
+                'Delete',
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              shouldTriggerVerification: _verificationNotifier.stream,
+              backgroundColor: AppColor.backgroundColor,
+              passwordDigits: 4,
+            ),
+            _pinCodeController.numberLoginPassCode.value > 3
+                ? Positioned(
+                    child: Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    color: Colors.white.withOpacity(0.75),
+                    child: Center(
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'This  device is lockes ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4!
+                              .copyWith(
+                                  color: Colors.blue,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                        ),
+                       const SizedBox(height: 3,),
+                        Text(
+                          'please try again in  ${_pinCodeController.numberTimmerDelayed.value} seconds',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4!
+                              .copyWith(
+                                  color: Colors.blue,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    )),
+                  ))
+                : Container(),
+          ],
+        ),
+      ),
+    );
   }
 }
-
-
-
-// class SecretsWithCustomAnimation extends StatefulWidget {
-//   const SecretsWithCustomAnimation({
-//     Key? key,
-//     required this.config,
-//     required this.length,
-//     required this.input,
-//     required this.verifyStream,
-//   }) : super(key: key);
-//   final SecretsConfig config;
-//   final int length;
-//   final ValueListenable<String> input;
-//   final Stream<bool> verifyStream;
-
-//   @override
-//   State<SecretsWithCustomAnimation> createState() =>
-//       _SecretsWithCustomAnimationState();
-// }
-
-// class _SecretsWithCustomAnimationState extends State<SecretsWithCustomAnimation>
-//     with SingleTickerProviderStateMixin {
-//   late Animation<double> _animation;
-//   late AnimationController _animationController;
-
-//   @override
-//   void initState() {
-//     super.initState();
-
-//     widget.verifyStream.listen((valid) {
-//       if (!valid) {
-//         // scale animation.
-//         _animationController.forward();
-//       }
-//     });
-
-//     _animationController = AnimationController(
-//       vsync: this,
-//       duration: const Duration(milliseconds: 80),
-//     );
-
-//     _animation = Tween<double>(begin: 1, end: 2).animate(_animationController)
-//       ..addStatusListener(
-//         (status) {
-//           if (status == AnimationStatus.completed) {
-//             _animationController.reverse();
-//           }
-//         },
-//       );
-//   }
-
-//   @override
-//   void dispose() {
-//     _animationController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ScaleTransition(
-//       scale: _animation,
-//       child: Secrets(
-//         input: widget.input,
-//         length: widget.length,
-//         config: widget.config,
-//       ),
-//     );
-//   }
-// }
-           
-         

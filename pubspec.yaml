@@ -42,6 +42,7 @@ dependencies:
   mobile_scanner: ^2.0.0
   qr_code_scanner: ^1.0.0
   flutter_screen_lock: ^7.0.4
+  passcode_screen: ^2.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
+      
       //// theme: theme(),
       debugShowCheckedModeBanner: false,
       routerDelegate: _appRouter.delegate(),

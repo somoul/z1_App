@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:z1_app/utils/app_color/app_colors.dart';
 
 import '../controller/login_controller.dart';
 // import 'package:mobile_scanner/mobile_scanner.dart';
@@ -27,7 +28,7 @@ class LoginQrCodeScreen extends StatelessWidget {
     cameraController.switchCamera();
     return Scaffold(
         appBar: null,
-        backgroundColor: Colors.blueAccent.withOpacity(0.5),
+        backgroundColor:AppColor.backgroundColor,
         // Colors.blueAccent.withOpacity(0.8),
         body: Center(
           child: Stack(

@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
     cameraController.dispose();
     return Scaffold(
       appBar: null,
-      backgroundColor: const Color(0xffF1F3F6),
+      backgroundColor:AppColor.backgroundColor,// const Color(0xffF1F3F6),
       body: Obx(
         () => Form(
           key: _formKey,
