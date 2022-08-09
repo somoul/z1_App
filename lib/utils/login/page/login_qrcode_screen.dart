@@ -93,9 +93,10 @@ class LoginQrCodeScreen extends StatelessWidget {
                                       ),
                                       GestureDetector(
                                         onTap: (){
+                                             context.popRoute();
                                             context
                                               .navigateNamedTo('pinCodeScreen');
-                                          context.popRoute();
+                                    
                                         },
                                         child: Text(
                                           'Pincode',

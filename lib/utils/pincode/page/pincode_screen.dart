@@ -37,10 +37,11 @@ class PinCodeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               passwordEnteredCallback: (pincode) {
+                _pinCodeController.lognInPincode(pincode, context);
                 debugPrint('======== show PinCode :$pincode===========');
                 if (pincode == '1234') {
-                  _verificationNotifier.add(true);
-                  context.navigateNamedTo('/test');
+                  //_verificationNotifier.add(true);
+                  //  context.navigateNamedTo('/test');
                 } else {
                   _verificationNotifier.add(false);
                   _pinCodeController.numberLoginPassCode.value =
@@ -120,7 +121,9 @@ class PinCodeScreen extends StatelessWidget {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w500),
                         ),
-                       const SizedBox(height: 3,),
+                        const SizedBox(
+                          height: 3,
+                        ),
                         Text(
                           'please try again in  ${_pinCodeController.numberTimmerDelayed.value} seconds',
                           style: Theme.of(context)
