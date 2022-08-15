@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_declarations
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
@@ -7,9 +7,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:z1_app/utils/app_color/app_colors.dart';
 
+import '../../../modules/bottom_bar.dart';
 import '../controller/login_controller.dart';
+
 class LoginQrCodeScreen extends StatelessWidget {
   const LoginQrCodeScreen({Key? key}) : super(key: key);
 
@@ -24,8 +27,7 @@ class LoginQrCodeScreen extends StatelessWidget {
     cameraController.switchCamera();
     return Scaffold(
         appBar: null,
-        backgroundColor:AppColor.backgroundColor,
-    
+        backgroundColor: AppColor.backgroundColor,
         body: Center(
           child: Stack(
             children: [
@@ -62,7 +64,8 @@ class LoginQrCodeScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       GestureDetector(
-                                        onTap: () {//pinCodeScreen
+                                        onTap: () {
+                                          //pinCodeScreen
                                           // cameraController.dispose();
                                           context
                                               .navigateNamedTo('signInScreen');
@@ -85,18 +88,27 @@ class LoginQrCodeScreen extends StatelessWidget {
                                       const Divider(
                                         height: 10,
                                         thickness: 3,
-                                     
                                         color: Colors.black,
                                       ),
                                       const SizedBox(
                                         height: 3,
                                       ),
                                       GestureDetector(
-                                        onTap: (){
-                                             context.popRoute();
-                                            context
-                                              .navigateNamedTo('pinCodeScreen');
-                                    
+                                        onTap: () async {
+                                          //Get.to(BottomBar());
+                                          // final url =
+                                          //     "https://online-quiz-75798.firebaseapp.com";
+                                          // if (await canLaunch(url)) {
+                                          //   await launch(url,
+                                          //       forceSafariVC: true,
+                                          //       forceWebView: true,
+                                          //       enableJavaScript: true);
+                                          // }
+                                          //  Navigator.pushNamed(context,'online-quiz-75798.firebaseapp.com');
+                                          //  context.popRoute();"",
+                                          context
+                                            .navigateNamedTo('pinCodeScreen');
+                                             
                                         },
                                         child: Text(
                                           'Pincode',
@@ -113,17 +125,13 @@ class LoginQrCodeScreen extends StatelessWidget {
                                   ),
                                 ),
                               );
-                           
                             });
                       },
                       child: const Icon(
                         Icons.more_vert,
                         color: Colors.white,
                         size: 35,
-                      ))
-                  
-                  ),
-
+                      ))),
               Center(
                 child: SizedBox(
                   height: // kIsWeb ? 248 :
@@ -135,13 +143,11 @@ class LoginQrCodeScreen extends StatelessWidget {
                     controller: cameraController,
                     onDetect: (barcode, args) {
                       loginController.linkScranQRCode.value = barcode.rawValue!;
-                   
 
                       debugPrint('Barcode found! 111 : ${barcode.rawValue!}');
                       loginController.linkScranQRCode.value.isNotEmpty
                           ? context.navigateNamedTo('/test')
                           : Container();
-                      
                     },
                   ),
                 ),
@@ -228,7 +234,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-           ],
+            ],
           ),
         ));
   }
