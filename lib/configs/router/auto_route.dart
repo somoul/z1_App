@@ -5,7 +5,7 @@ import 'package:z1_app/modules/bottom_bar.dart.dart';
 import '../../cores/splash_screen.dart';
 import '../../cores/walk_though/page/onborading_screen.dart';
 import '../../modules/home/page/home_screen.dart';
-import '../../modules/profile/profile_screen.dart';
+import '../../modules/profile/page/profile_screen.dart';
 import '../../modules/qr_screen/screen/qr_screen.dart';
 import '../../modules/scan_qp_code/scan_qr_code_screen.dart';
 import '../../utils/login/page/login_qrcode_screen.dart';

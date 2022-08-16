@@ -49,6 +49,7 @@ dependencies:
   passcode_screen: ^2.0.1
   firebase_database: ^9.1.0
   url_launcher: ^6.1.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -24,7 +24,7 @@ class CustomCart extends StatelessWidget {
       onTap: () {
         isPressed = !isPressed;
         debugPrint(' ======== isPressed:$isPressed======== ');
-        //onTap != null ? onTap!() : Container();
+        onTap != null ? onTap!() : Container();
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 10),

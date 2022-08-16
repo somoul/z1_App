@@ -17,7 +17,7 @@ import '../../cores/splash_screen.dart' as _i1;
 import '../../cores/walk_though/page/onborading_screen.dart' as _i6;
 import '../../modules/bottom_bar.dart.dart' as _i7;
 import '../../modules/home/page/home_screen.dart' as _i9;
-import '../../modules/profile/profile_screen.dart' as _i10;
+import '../../modules/profile/page/profile_screen.dart' as _i10;
 import '../../modules/qr_screen/screen/qr_screen.dart' as _i4;
 import '../../modules/scan_qp_code/scan_qr_code_screen.dart' as _i8;
 import '../../utils/login/page/login_qrcode_screen.dart' as _i5;

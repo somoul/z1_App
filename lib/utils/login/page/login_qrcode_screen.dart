@@ -67,9 +67,10 @@ class LoginQrCodeScreen extends StatelessWidget {
                                         onTap: () {
                                           //pinCodeScreen
                                           // cameraController.dispose();
+                                              context.popRoute();
                                           context
                                               .navigateNamedTo('signInScreen');
-                                          context.popRoute();
+                                      
                                         },
                                         child: Text(
                                           'Login',
@@ -106,6 +107,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                           // }
                                           //  Navigator.pushNamed(context,'online-quiz-75798.firebaseapp.com');
                                           //  context.popRoute();"",
+                                          context.popRoute();
                                           context
                                               .navigateNamedTo('pinCodeScreen');
                                         },
