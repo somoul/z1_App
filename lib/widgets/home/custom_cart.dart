@@ -52,8 +52,6 @@ class CustomCart extends StatelessWidget {
                 //fromDirection(4,-7),
                 // blurStyle:BlurStyle.outer
               ),
-             
-
             ]),
         child: SizedBox(
           height: double.infinity,
@@ -64,7 +62,7 @@ class CustomCart extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.network(
-                image!,
+                image ?? '',
                 height: 50.9,
                 width: 50.9,
                 alignment: Alignment.center,

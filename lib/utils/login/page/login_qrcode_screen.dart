@@ -10,7 +10,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:z1_app/utils/app_color/app_colors.dart';
 
-import '../../../modules/bottom_bar.dart';
+// import '../../../modules/bottom_bar.dart';
 import '../controller/login_controller.dart';
 
 class LoginQrCodeScreen extends StatelessWidget {
@@ -44,7 +44,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: kIsWeb ? 240 : 240,
                                     right: 25,
-                                    bottom: kIsWeb ? 720 : 690,
+                                    bottom: kIsWeb ? 720 : 643,
                                     top: 50),
                                 child: Container(
                                   height: 10,
@@ -107,8 +107,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                                           //  Navigator.pushNamed(context,'online-quiz-75798.firebaseapp.com');
                                           //  context.popRoute();"",
                                           context
-                                            .navigateNamedTo('pinCodeScreen');
-                                             
+                                              .navigateNamedTo('pinCodeScreen');
                                         },
                                         child: Text(
                                           'Pincode',
@@ -204,35 +203,66 @@ class LoginQrCodeScreen extends StatelessWidget {
                     : Platform.isIOS
                         ? 150
                         : 100,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        _qrViewController!.toggleFlash();
-                        //  setState(() {
-                        isFlashOn = !isFlashOn!;
-                        // });
-                      },
-                      child: SvgPicture.asset(
-                        isFlashOn == true
-                            ? 'asset/image/image_svg/flash.svg'
-                            : 'asset/image/image_svg/flash.svg',
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Flash',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            fontSize: 14,
-                            color: Colors.white70.withOpacity(0.9),
-                            fontFamily: 'SFPRODISPLAYREGULAR',
+                child:  Stack(
+                  alignment : AlignmentDirectional.center,
+                      children: [
+                        Container(
+                          height: 50,
+                          width: 50,
+                          // color: Colors.blue.shade100,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.blue.shade100,
+                              boxShadow: const[
+                                 BoxShadow(
+                                    color: Colors.black54,
+                                    blurRadius: 1,
+                                    spreadRadius: 1.5)
+                              ]),
+
+                          child: Center(
+                            child: SvgPicture.asset(
+                              isFlashOn == true
+                                  ? 'asset/image/image_svg/flash.svg'
+                                  : 'asset/image/image_svg/flash.svg',
+                              height: 45,
+                              width: 45,
+                            ),
                           ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
+                // Column(
+                //   children: [
+                //     GestureDetector(
+                //       onTap: () {
+                //         _qrViewController!.toggleFlash();
+                //         //  setState(() {
+                //         isFlashOn = !isFlashOn!;
+                //         // });
+                //       },
+                //       child: SvgPicture.asset(
+                //         isFlashOn == true
+                //             ? 'asset/image/image_svg/flash.svg'
+                //             : 'asset/image/image_svg/flash.svg',
+                //       ),
+                //     ),
+                //     const SizedBox(
+                //       height: 10,
+                //     ),
+                //     Text(
+                //       'Flash',
+                //       textAlign: TextAlign.center,
+                //       style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                //             fontSize: 14,
+                //             color: Colors.white70.withOpacity(0.9),
+                //             fontFamily: 'SFPRODISPLAYREGULAR',
+                //           ),
+                //     ),
+              
+              
+                //   ],
+                // ),
               ),
             ],
           ),
@@ -264,7 +294,7 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
   Widget build(BuildContext context) {
     double scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
-        ? 215.0
+        ? 328.0
         : 330.0;
     return Stack(children: [
       Align(
@@ -298,7 +328,7 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
 class BorderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    const width = 4.7;
+    const width = 4.8;
 
     const radius = 13.0;
     const tRadius = 3 * radius;

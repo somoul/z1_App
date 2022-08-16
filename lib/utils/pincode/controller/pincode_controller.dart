@@ -1,5 +1,7 @@
 // ignore_for_file: unused_label, use_build_context_synchronously, prefer_const_constructors
 
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,6 @@ class PinCodeController extends GetxController {
   final numberTimmerDelayed = 0.obs;
   final time = 15.obs;
   final isLoding = false.obs;
-
   lognInPincode(String pincode, BuildContext context) async {
     isLoding(true);
     var collection = FirebaseFirestore.instance.collection('user');
@@ -20,8 +21,10 @@ class PinCodeController extends GetxController {
 
       debugPrint(' ======11111 :${data['pincode']}');
       if (pincode == data['pincode']) {
-        //_verificationNotifier.add(true);
-        context.navigateNamedTo('/test');
+        //_verificationNotifier.add(true);/"",
+          
+        context.navigateNamedTo("");
+        // context.navigateNamedTo('/test');
         isLoding(false);
       } else {
         isLoding(false);

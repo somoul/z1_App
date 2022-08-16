@@ -1,4 +1,12 @@
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import '../../utils/app_color/app_colors.dart';
+import '../../utils/login/controller/login_controller.dart';
 // import 'package:mobile_scanner/mobile_scanner.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
@@ -11,149 +19,125 @@ class ScanQrCodeSceen extends StatefulWidget {
   State<ScanQrCodeSceen> createState() => _ScanQrCodeSceenState();
 }
 
+final loginController = Get.put(LoginController());
+QRViewController? _qrViewController;
+final cameraController = MobileScannerController();
+bool? isFlashOn = false;
+// debugPrint('====== Show cameraController :$cameraController====');
+
+// bool? isFlashOn = false;
+
 class _ScanQrCodeSceenState extends State<ScanQrCodeSceen> {
-  // final scanQrController = Get.put(ScanQrController());
- // final cameraController = MobileScannerController();
-  bool? isFlashOn = false;
+  @override
+  void initState() {
+    cameraController.start();
+    cameraController.switchCamera();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   elevation: 0,
-        //   backgroundColor: const Color(0xFF49585F),
-        //   leading: IconButton(
-        //     color: Colors.white,
-        //     icon: const Icon(Icons.clear),
-        //     onPressed: () {
-        //       context.router.navigateBack();
-        //     },
-        //     // size: 21,
-        //     iconSize: 21,
-        //   ),
-        // ),
-        appBar: null,
-        backgroundColor: const Color(0xFF49585F),
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: Colors.black12,
-        ));
-    // Center
-    //   child: Stack(
-    //     children: [
-    //       Positioned(
-    //         left: 10,
-    //         top: 20,
-    //         child: IconButton(
-    //           // Icons.clear,
-    //           color: Colors.white,
-    //           icon: const Icon(Icons.clear),
-    //           onPressed: () {
-    //             context.router.navigateBack();
-    //             //Navigator.pop(context);
-    //           },
-    //           // size: 21,
-    //           iconSize: 21,
-    //         ),
-    //       ),
-    //       Center(
-    //         child: SizedBox(
-    //           height: 227.7,
-    //           width: 227.5,
-    //           child: MobileScanner(
-    //             allowDuplicates: true,
-    //             controller: cameraController,
-    //             onDetect: (barcode, args) {
-    //               // scanQrController.linkScranQRCode.value =
-    //               //     barcode.rawValue!;
-    //               debugPrint('Barcode found! 111 : ${barcode.rawValue!}');
-    //               Timer(
-    //                 const Duration(seconds: 1),
-    //                 () {
-    //                   // context.router.navigateBack();
-    //                 },
-    //               );
-    //             },
-    //           ),
-    //         ),
-    //       ),
-    //       QRScannerOverlay(
-    //         overlayColour: Colors.red.withOpacity(0.5),
-    //       ),
-    //       Positioned(
-    //         left: 15,
-    //         right: 15,
-    //         top: 220,
-    //         child: Center(
-    //           child: Column(
-    //             mainAxisAlignment: MainAxisAlignment.center,
-    //             crossAxisAlignment: CrossAxisAlignment.center,
-    //             children: [
-    //               Text(
-    //                 'Scan QR Code',
-    //                 textAlign: TextAlign.center,
-    //                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-    //                       fontSize: 22,
-    //                       fontFamily: 'SFPRODISPLAYBOLD',
-    //                       //fontWeight: FontWeight.w700,
-    //                       color: Colors.white.withOpacity(0.9),
-    //                     ),
-    //               ),
-    //               const SizedBox(
-    //                 height: 10,
-    //               ),
-    //               Text(
-    //                 'Align QR code within the frame to scan',
-    //                 textAlign: TextAlign.center,
-    //                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-    //                       fontSize: 16,
-    //                       // fontWeight: FontWeight.w700,
-    //                       fontFamily: 'SFPRODISPLAYREGULAR',
-    //                       color: Colors.white.withOpacity(0.9),
-    //                     ),
-    //               )
-    //             ],
-    //           ),
-    //         ),
-    //       ),
-    //       Positioned(
-    //         left: 0,
-    //         right: 0,
-    //         bottom: 170,
-    //         child: Column(
-    //           children: [
-    //             GestureDetector(
-    //               onTap: () {
-    //                 setState(() {
-    //                   isFlashOn = !isFlashOn!;
-    //                 });
-    //               },
-    //               child: SvgPicture.asset(
-    //                 isFlashOn == true
-    //                     ? 'assets/svg/flash.svg'
-    //                     : 'assets/svg/flash.svg',
-    //               ),
-    //             ),
-    //             const SizedBox(
-    //               height: 10,
-    //             ),
-    //             Text(
-    //               'Flash',
-    //               textAlign: TextAlign.center,
-    //               style: Theme.of(context).textTheme.bodyText1!.copyWith(
-    //                     fontSize: 14,
-    //                     color: Colors.white70.withOpacity(0.9),
-    //                     fontFamily: 'SFPRODISPLAYREGULAR',
-    //                   ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
+        appBar: 
+      AppBar(
+        backgroundColor: AppColor.buttonColor.withOpacity(0.8),
+        actions: null,
+        leading: Container(),
+        title: null,
+      ),
+        backgroundColor: Colors.white, // AppColor.backgroundColor,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                child: Stack(
+                   alignment : AlignmentDirectional.center,
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        height: // kIsWeb ? 248 :
+                          265.3,
+                        width: //kIsWeb ? 260 :
+                            274,
+                        child: MobileScanner(
+                          allowDuplicates: false,
+                          controller: cameraController,
+                          onDetect: (barcode, args) {
+                            loginController.linkScranQRCode.value = barcode.rawValue!;
 
-    //     ],
-    //   ),
-    // ));
+                            debugPrint('Barcode found! 111 : ${barcode.rawValue!}');
+                            // loginController.linkScranQRCode.value.isNotEmpty
+                            //     ? context.navigateNamedTo('/test')
+                            //     : Container();
+                          },
+                        ),
+                      ),
+                    ),
+                      Center(child:  QRScannerOverlay(
+                overlayColour: Colors.red.withOpacity(0.5),
+              ),
+             )
+                  ],
+                ),
+              ),
+            const SizedBox(height: 60,),
+              Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      _qrViewController!.toggleFlash();
+                      //  setState(() {
+                      isFlashOn = !isFlashOn!;
+                      // });
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 50,
+                          width: 50,
+                          // color: Colors.blue.shade100,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.blue.shade100,
+                              boxShadow: const[
+                                 BoxShadow(
+                                    color: Colors.black54,
+                                    blurRadius: 1,
+                                    spreadRadius: 1.5)
+                              ]),
+
+                          child: Center(
+                            child: SvgPicture.asset(
+                              isFlashOn == true
+                                  ? 'asset/image/image_svg/flash.svg'
+                                  : 'asset/image/image_svg/flash.svg',
+                              height: 45,
+                              width: 45,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Flash',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 14,
+                          color: Colors.black.withOpacity(0.9),
+                          fontFamily: 'SFPRODISPLAYREGULAR',
+                        ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ));
   }
 }
 
@@ -168,19 +152,20 @@ class QRScannerOverlay extends StatefulWidget {
 }
 
 class _QRScannerOverlayState extends State<QRScannerOverlay> {
+  // QRViewController? qrViewController;
   bool? isScanner = false;
-  @override
-  void initState() {
-    isScanner = true;
 
-    super.initState();
-  }
+  // @override
+  // void dispose() {
+  //   qrViewController!.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     double scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
-        ? 215.0
+        ? 343.0
         : 330.0;
     return Stack(children: [
       Align(
@@ -191,8 +176,18 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
 
           // backgroundColor:Colors.red,
           child: SizedBox(
-            width: scanArea + 24.5,
-            height: scanArea + 24.5,
+            // width: scanArea + 56.5,
+            // height: scanArea + 47.09,
+            width: kIsWeb
+                ? scanArea + 58.5
+                : Platform.isIOS
+                    ? scanArea - 55
+                    : scanArea + 56.5,
+            height: kIsWeb
+                ? scanArea + 47.5
+                : Platform.isIOS
+                    ? scanArea - 65
+                    : scanArea + 47.09,
           ),
         ),
       ),
@@ -204,7 +199,7 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
 class BorderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    const width = 3.8;
+    const width = 4.8;
 
     const radius = 13.0;
     const tRadius = 3 * radius;
@@ -251,7 +246,7 @@ class BorderPainter extends CustomPainter {
     canvas.drawRRect(
       rrect,
       Paint()
-        ..color = Colors.white
+        ..color = Colors.blue
         ..style = PaintingStyle.stroke
         ..strokeWidth = width,
     );

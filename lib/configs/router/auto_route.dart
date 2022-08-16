@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:z1_app/widgets/test_component.dart';
+import 'package:z1_app/modules/bottom_bar.dart.dart';
 // import 'package:z1_web_view_app/modules/qr_screen/screen/qr_screen.dart';
 
 import '../../cores/splash_screen.dart';
 import '../../cores/walk_though/page/onborading_screen.dart';
-import '../../modules/bottom_bar.dart';
-import '../../modules/dassbord/dassbord_screen.dart';
+import '../../modules/home/page/home_screen.dart';
 import '../../modules/profile/profile_screen.dart';
 import '../../modules/qr_screen/screen/qr_screen.dart';
 import '../../modules/scan_qp_code/scan_qr_code_screen.dart';
@@ -31,11 +30,11 @@ import '../../utils/pincode/page/pincode_screen.dart';
       path: 'qrscreen',
       // initial: true,
     ),
-    AutoRoute(
-      path: "/test",
-      page: TestComponent,
-      // initial: true,
-    ),
+    // AutoRoute(
+    //   path: "/test",
+    //   page: TestComponent,
+    //   // initial: true,
+    // ),
     AutoRoute(
         path: "loginQrCodeScreen",
         page: LoginQrCodeScreen,
@@ -44,7 +43,10 @@ import '../../utils/pincode/page/pincode_screen.dart';
         path: "onboardingScreen",
         page: OnboardingScreen,
         name: 'OnboardingScreen'),
-    AutoRoute(path: "", page: BottomBar, children: [
+    AutoRoute(
+      path: "", 
+    page: BottomBar,
+     children: [
       AutoRoute(
         page: ScanQrCodeSceen,
         path: 'scanQrCodeSceen',
@@ -52,9 +54,9 @@ import '../../utils/pincode/page/pincode_screen.dart';
       ),
       AutoRoute(
         initial: true,
-        path: "dassbordScreen",
-        name: "DassbordScreen",
-        page: DassbordScreen,
+        path: "homeScreen",
+        name: "HomeScreen",
+        page: HomeScreen,
       ),
       AutoRoute(
         path: "profileScreen",

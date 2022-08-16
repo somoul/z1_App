@@ -16,11 +16,15 @@ class PinCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final StreamController<bool> _verificationNotifier =
         StreamController<bool>.broadcast();
+
     // Timer? timer;
     final _pinCodeController = Get.put(PinCodeController());
+
     // int time = 30;
+    // _verificationNotifier.add(true);
     int numberLoginPassCode = 1;
     // int numberTimmerDelayed = 30;
+    // _verificationNotifier.close();
     return Scaffold(
       appBar: null,
       backgroundColor: Colors.white,
@@ -39,6 +43,7 @@ class PinCodeScreen extends StatelessWidget {
               passwordEnteredCallback: (pincode) {
                 _pinCodeController.lognInPincode(pincode, context);
                 debugPrint('======== show PinCode :$pincode===========');
+                _verificationNotifier.add(false);
                 if (pincode == '1234') {
                   //_verificationNotifier.add(true);
                   //  context.navigateNamedTo('/test');
