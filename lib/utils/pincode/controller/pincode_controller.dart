@@ -19,9 +19,10 @@ class PinCodeController extends GetxController {
   final _profileController = Get.put(ProfileController());
   lognInPincode(String pincode, BuildContext context) async {
     isLoding(true);
+    
     var collection = FirebaseFirestore.instance.collection('user');
     var querySnapshot = await collection.get();
-
+  
     for (var queryDocumentSnapshot in querySnapshot.docs) {
       Map<String, dynamic> data = queryDocumentSnapshot.data();
 
@@ -29,29 +30,28 @@ class PinCodeController extends GetxController {
         stoToken.value = data['token'];
         debugPrint(' ======stoToken 11 :${stoToken.value}');
         _profileController.getDataProfile(stoToken.value);
-        Timer(const Duration(seconds: 2), () {
-          context.navigateNamedTo("");
-        });
+         context.navigateNamedTo("");
 
         isLoding(false);
       } else {
-        final snackdemo = SnackBar(
-          width: double.infinity,
-          //  padding:EdgeInsets.only(top: 10,bottom: 10),
-          content: const SizedBox(
-              height: 15,
-              child: Center(
-                child: Text('something went wrong...!'),
-              )),
-          backgroundColor: Colors.blue[300],
-          // elevation: 15,
-          behavior: SnackBarBehavior.floating,
+        // final snackdemo = SnackBar(
+        //   width: double.infinity,
+        //   //  padding:EdgeInsets.only(top: 10,bottom: 10),
+        //   content: const SizedBox(
+        //       height: 15,
+        //       child: Center(
+        //         child: Text('something went wrong...!'),
+        //       )),
+        //   backgroundColor: Colors.blue[300],
+        //   // elevation: 15,
+        //   behavior: SnackBarBehavior.floating,
 
-          //margin: EdgeInsets.all(1),
-          duration: const Duration(seconds: 3),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackdemo);
-        isLoding(false);
+        //   //margin: EdgeInsets.all(1),
+        //   duration: const Duration(seconds: 3),
+        // );
+        // ScaffoldMessenger.of(context).showSnackBar(snackdemo);
+       
+       isLoding(false);
       }
     }
   }
