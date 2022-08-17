@@ -217,7 +217,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                               color: Colors.blue.shade100,
                               boxShadow: const[
                                  BoxShadow(
-                                    color: Colors.black54,
+                                    color: Colors.black87,
                                     blurRadius: 1,
                                     spreadRadius: 1.5)
                               ]),

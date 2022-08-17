@@ -12,9 +12,9 @@ import 'package:z1_app/configs/app_constant.dart';
 import 'package:z1_app/utils/app_color/app_colors.dart';
 
 import '../configs/router/auto_route.gr.dart';
-import '../utils/home/controler/home_comtroller.dart';
 import '../widgets/home/custom_cart.dart';
 import 'controler_bottom_bar.dart/controller_bar.dart';
+import 'home/controler/home_comtroller.dart';
 
 class BottomBar extends StatefulWidget {
   //BottomBar

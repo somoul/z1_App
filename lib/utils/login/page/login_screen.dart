@@ -89,30 +89,31 @@ class SignInScreen extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              const Spacer(), //scanqrcodesceen
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: kIsWeb ? 50 : 33,
-                                  right: 5,
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    cameraController.start();
-                                    cameraController.switchCamera();
-                                    //context.navigateNamedTo('loginQrCodeScreen');
-                                    context.navigateBack();
-                                    loginController.linkScranQRCode.value = '';
-                                    // context.navigateBack();
-                                    // context.navigateNamedTo('loginQrCodeScreen');
-                                    //  context.navigateNamedTo('scanqrcodesceen');
-                                  },
-                                  child: Image.asset(
-                                    'asset/image/image_png/qr_code.png',
-                                    width: 63,
-                                    height: 63,
-                                  ),
-                                ),
-                              ),
+                              // const Spacer(), //scanqrcodesceen
+                              // Padding(
+                              //   padding: const EdgeInsets.only(
+                              //     bottom: kIsWeb ? 50 : 33,
+                              //     right: 5,
+                              //   ),
+                              //   child: GestureDetector(
+                              //     onTap: () {
+                              //       cameraController.start();
+                              //       cameraController.switchCamera();
+                              //       //context.navigateNamedTo('loginQrCodeScreen');
+                              //       context.navigateBack();
+                              //       loginController.linkScranQRCode.value = '';
+                              //       // context.navigateBack();
+                              //       // context.navigateNamedTo('loginQrCodeScreen');
+                              //       //  context.navigateNamedTo('scanqrcodesceen');
+                              //     },
+                              //     child: Image.asset(
+                              //       'asset/image/image_png/qr_code.png',
+                              //       width: 63,
+                              //       height: 63,
+                              //     ),
+                              //   ),
+                              // ),
+                           
                             ],
                           ),
                         ),

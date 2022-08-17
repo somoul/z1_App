@@ -14,9 +14,9 @@
 // class _SlashScreenState extends State<SlashScreen> {
 //   @override
 //   void initState() {
-//     Timer(const Duration(seconds: 3), () {
-//       context.navigateNamedTo('onboardingScreen');
-//     });
+    // Timer(const Duration(seconds: 3), () {
+    //   context.navigateNamedTo('onboardingScreen');
+    // });
 //     super.initState();
 //   }
 

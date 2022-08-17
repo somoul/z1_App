@@ -1,13 +1,15 @@
+// ignore_for_file: unused_local_variable, no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/app_color/app_colors.dart';
-import '../../../utils/home/controler/home_comtroller.dart';
 import '../../../widgets/custom_default_size_web.dart';
 import '../../../widgets/home/custom_cart.dart';
 import '../../controler_bottom_bar.dart/controller_bar.dart';
+import '../controler/home_comtroller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

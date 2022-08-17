@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:get/get.dart';
 import 'package:z1_app/modules/profile/controller/profile_controller.dart';
-import 'package:z1_app/modules/profile/page/viewprofile_screen.dart';
 
 import '../../../utils/app_color/app_colors.dart';
 
@@ -15,8 +14,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _profileController = Get.put(ProfileController());
-    _profileController.getDataProfile();
-    // Timer? timer;
+
     return Obx(
       () => Scaffold(
           appBar: AppBar(
@@ -259,8 +257,8 @@ class ProfileScreen extends StatelessWidget {
                         const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            context.navigateNamedTo('loginQrCodeScreen');
-                            // /context.navigateNamedTo('signInScreen');
+                            // context.navigateNamedTo('loginQrCodeScreen');
+                            context.navigateNamedTo('signInScreen');
                           },
                           child: Container(
                             height: 55,

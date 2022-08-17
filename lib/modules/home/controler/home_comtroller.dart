@@ -6,7 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:z1_app/utils/home/model/app_model/app_models.dart';
+
+import '../model/app_model/app_models.dart';
 
 class HomeController extends GetxController {
   List<HomeModel> homeListModel = [];
@@ -34,10 +35,10 @@ class HomeController extends GetxController {
       debugPrint("------------->hello list = ${homeListModel.length}");
 
       debugPrint("list  : $homeListModel");
-       isLoding(false);
+      isLoding(false);
     }).onError((error, stackTrace) {
       debugPrint("#####_-------> ${error.toString()}");
-       isLoding(false);
+      isLoding(false);
     });
   }
 }
