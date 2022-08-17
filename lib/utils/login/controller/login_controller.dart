@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../modules/profile/controller/profile_controller.dart';
+import '../../stolocal_data/local_data.dart';
 
 class LoginController extends GetxController {
   final isCheckClick = false.obs;
@@ -32,6 +33,7 @@ class LoginController extends GetxController {
           .then((value) async {
         _profileController.getDataProfile(value.user!.uid);
         debugPrint(' ====== Token :${value.user!.uid}');
+        LocalData.storeCurrentUser(value.user!.uid);
         context.navigateNamedTo("");
       });
 

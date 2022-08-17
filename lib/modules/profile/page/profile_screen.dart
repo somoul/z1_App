@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:z1_app/modules/profile/controller/profile_controller.dart';
 
 import '../../../utils/app_color/app_colors.dart';
+import '../../../utils/stolocal_data/local_data.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -256,8 +257,9 @@ class ProfileScreen extends StatelessWidget {
                         const Spacer(),
                         const Spacer(),
                         GestureDetector(
-                          onTap: () {
+                          onTap: ()async {
                             // context.navigateNamedTo('loginQrCodeScreen');
+                             LocalData.removeCurrentUser() ;
                             context.navigateNamedTo('signInScreen');
                           },
                           child: Container(

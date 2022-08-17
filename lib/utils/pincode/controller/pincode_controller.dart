@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../modules/profile/controller/profile_controller.dart';
+import '../../stolocal_data/local_data.dart';
 
 class PinCodeController extends GetxController {
   final numberLoginPassCode = 0.obs;
@@ -29,6 +30,7 @@ class PinCodeController extends GetxController {
       if (pincode == data['pincode']) {
         stoToken.value = data['token'];
         debugPrint(' ======stoToken 11 :${stoToken.value}');
+         LocalData.storeCurrentUser(stoToken.value);
         _profileController.getDataProfile(stoToken.value);
          context.navigateNamedTo("");
 

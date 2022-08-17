@@ -1,8 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+
+import '../modules/profile/controller/profile_controller.dart';
+import '../utils/stolocal_data/local_data.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,10 +18,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+String token='';
+  final _profileController = Get.put(ProfileController());
   @override
   void initState() {
-    Timer(const Duration(seconds: 3), () {
-      context.navigateNamedTo('onboardingScreen');
+    
+    Timer(const Duration(seconds: 3), ()async {
+    token= await LocalData.getCurrentUser() ;
+       debugPrint("22===== 1111 show token :$token" );
+       if(token!='')
+       {
+         _profileController.getDataProfile(token);
+          context.navigateNamedTo("");
+
+       }else{
+         context.navigateNamedTo('onboardingScreen');
+
+       }
+
     });
     super.initState();
   } // SlashScreen({Key? key}) : super(key: key);
