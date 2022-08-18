@@ -13,6 +13,7 @@ _$_ProfileModel _$$_ProfileModelFromJson(Map<String, dynamic> json) =>
       emaill: json['emaill'] as String?,
       image_profile: json['image_profile'] as String?,
       pincode: json['pincode'] as String?,
+      bree_admin: json['bree_admin'] as String?,
     );
 
 Map<String, dynamic> _$$_ProfileModelToJson(_$_ProfileModel instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$_ProfileModelToJson(_$_ProfileModel instance) =>
       'emaill': instance.emaill,
       'image_profile': instance.image_profile,
       'pincode': instance.pincode,
+      'bree_admin': instance.bree_admin,
     };

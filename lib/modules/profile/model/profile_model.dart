@@ -11,6 +11,7 @@ class ProfileModel with _$ProfileModel {
     String? emaill,
     String? image_profile,
      String? pincode,
+     String? bree_admin,
   }) = _ProfileModel;
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) =>

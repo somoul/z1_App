@@ -1,5 +1,7 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
-// ignore_for_file: avoid_types_as_parameter_names, non_constant_identifier_names, deprecated_member_use
+// ignore_for_file: avoid_types_as_parameter_names, non_constant_identifier_names, deprecated_member_use, invalid_use_of_protected_member
+
+import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,25 +12,26 @@ import 'package:get/get.dart';
 import '../model/app_model/app_models.dart';
 
 class HomeController extends GetxController {
-  List<HomeModel> homeListModel = [];
+  final homeListModel = <HomeModel>[].obs;
 
   final listApp = HomeModel().obs;
   final isLoding = false.obs;
+  final listAppuse = ''.obs;
   List<DocumentSnapshot<HomeModel>> results = [];
   getApplist() {
     isLoding(true);
-    homeListModel.clear();
+    homeListModel.value.clear();
     FirebaseFirestore.instance
         .collection('chip_app')
         .doc("o4dykIEJQzg3AoZ1rqOk")
         .get()
         .then((value) async {
-      value.data()!['app_list'].map(
+      value.data()![listAppuse.value].map(
         (e) {
           debugPrint("------------->hello");
 
           var item = HomeModel.fromJson(e);
-          homeListModel.add(item);
+          homeListModel.value.add(item);
         },
       ).toList();
 

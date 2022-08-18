@@ -25,6 +25,7 @@ mixin _$ProfileModel {
   String? get emaill => throw _privateConstructorUsedError;
   String? get image_profile => throw _privateConstructorUsedError;
   String? get pincode => throw _privateConstructorUsedError;
+  String? get bree_admin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $ProfileModelCopyWith<$Res> {
       String? first_name,
       String? emaill,
       String? image_profile,
-      String? pincode});
+      String? pincode,
+      String? bree_admin});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$ProfileModelCopyWithImpl<$Res> implements $ProfileModelCopyWith<$Res> {
     Object? emaill = freezed,
     Object? image_profile = freezed,
     Object? pincode = freezed,
+    Object? bree_admin = freezed,
   }) {
     return _then(_value.copyWith(
       last_name: last_name == freezed
@@ -82,6 +85,10 @@ class _$ProfileModelCopyWithImpl<$Res> implements $ProfileModelCopyWith<$Res> {
           ? _value.pincode
           : pincode // ignore: cast_nullable_to_non_nullable
               as String?,
+      bree_admin: bree_admin == freezed
+          ? _value.bree_admin
+          : bree_admin // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$_ProfileModelCopyWith<$Res>
       String? first_name,
       String? emaill,
       String? image_profile,
-      String? pincode});
+      String? pincode,
+      String? bree_admin});
 }
 
 /// @nodoc
@@ -119,6 +127,7 @@ class __$$_ProfileModelCopyWithImpl<$Res>
     Object? emaill = freezed,
     Object? image_profile = freezed,
     Object? pincode = freezed,
+    Object? bree_admin = freezed,
   }) {
     return _then(_$_ProfileModel(
       last_name: last_name == freezed
@@ -141,6 +150,10 @@ class __$$_ProfileModelCopyWithImpl<$Res>
           ? _value.pincode
           : pincode // ignore: cast_nullable_to_non_nullable
               as String?,
+      bree_admin: bree_admin == freezed
+          ? _value.bree_admin
+          : bree_admin // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -153,7 +166,8 @@ class _$_ProfileModel implements _ProfileModel {
       this.first_name,
       this.emaill,
       this.image_profile,
-      this.pincode});
+      this.pincode,
+      this.bree_admin});
 
   factory _$_ProfileModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileModelFromJson(json);
@@ -168,10 +182,12 @@ class _$_ProfileModel implements _ProfileModel {
   final String? image_profile;
   @override
   final String? pincode;
+  @override
+  final String? bree_admin;
 
   @override
   String toString() {
-    return 'ProfileModel(last_name: $last_name, first_name: $first_name, emaill: $emaill, image_profile: $image_profile, pincode: $pincode)';
+    return 'ProfileModel(last_name: $last_name, first_name: $first_name, emaill: $emaill, image_profile: $image_profile, pincode: $pincode, bree_admin: $bree_admin)';
   }
 
   @override
@@ -185,7 +201,9 @@ class _$_ProfileModel implements _ProfileModel {
             const DeepCollectionEquality().equals(other.emaill, emaill) &&
             const DeepCollectionEquality()
                 .equals(other.image_profile, image_profile) &&
-            const DeepCollectionEquality().equals(other.pincode, pincode));
+            const DeepCollectionEquality().equals(other.pincode, pincode) &&
+            const DeepCollectionEquality()
+                .equals(other.bree_admin, bree_admin));
   }
 
   @JsonKey(ignore: true)
@@ -196,7 +214,8 @@ class _$_ProfileModel implements _ProfileModel {
       const DeepCollectionEquality().hash(first_name),
       const DeepCollectionEquality().hash(emaill),
       const DeepCollectionEquality().hash(image_profile),
-      const DeepCollectionEquality().hash(pincode));
+      const DeepCollectionEquality().hash(pincode),
+      const DeepCollectionEquality().hash(bree_admin));
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +236,8 @@ abstract class _ProfileModel implements ProfileModel {
       final String? first_name,
       final String? emaill,
       final String? image_profile,
-      final String? pincode}) = _$_ProfileModel;
+      final String? pincode,
+      final String? bree_admin}) = _$_ProfileModel;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$_ProfileModel.fromJson;
@@ -232,6 +252,8 @@ abstract class _ProfileModel implements ProfileModel {
   String? get image_profile;
   @override
   String? get pincode;
+  @override
+  String? get bree_admin;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileModelCopyWith<_$_ProfileModel> get copyWith =>

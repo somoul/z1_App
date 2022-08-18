@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, invalid_use_of_protected_member
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +8,8 @@ import 'package:z1_app/modules/profile/controller/profile_controller.dart';
 
 import '../../../utils/app_color/app_colors.dart';
 import '../../../utils/stolocal_data/local_data.dart';
+import '../../controler_bottom_bar.dart/controller_bar.dart';
+import '../../home/controler/home_comtroller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -15,7 +17,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _profileController = Get.put(ProfileController());
-
+    final _bottomBarController=Get.put(BottomBarController());
+//  List<HomeModel> homeListModel = [];
+ final _homeController=Get.put(HomeController());
     return Obx(
       () => Scaffold(
           appBar: AppBar(
@@ -69,7 +73,10 @@ class ProfileScreen extends StatelessWidget {
             //       Icons.close,
             //       size: 28,
             //     )),
-            title: const Text('Profile'),
+            title:  Text('Profile', style: Theme.of(context).textTheme.headline5!.copyWith(
+                    fontSize: 22,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),),
           ),
           body: _profileController.isLoading.value
               ? const Center(
@@ -259,8 +266,13 @@ class ProfileScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: ()async {
                             // context.navigateNamedTo('loginQrCodeScreen');
+                         
                              LocalData.removeCurrentUser() ;
-                            context.navigateNamedTo('signInScreen');
+                           context.navigateNamedTo('signInScreen');
+                              //  homeListModel.clear();
+                               _homeController.homeListModel.value.clear();
+                            _bottomBarController.selecIndexButtomNavigetion.value=1;
+                          // debugPrint(' ======  _homeController.homeListModel : ${ _homeController.homeListModel.length}');
                           },
                           child: Container(
                             height: 55,
