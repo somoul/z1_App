@@ -130,7 +130,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                       },
                       child: const Icon(//
                         Icons.more_vert,
-                        color: Colors.white,
+                        color: Colors.white,//
                         size: 35,
                       ))),
               Center(
