@@ -128,7 +128,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                               );
                             });
                       },
-                      child: const Icon(
+                      child: const Icon(//
                         Icons.more_vert,
                         color: Colors.white,
                         size: 35,
