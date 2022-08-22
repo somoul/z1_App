@@ -48,16 +48,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCmG8Ds8ybiWx8Ork2eex99C_A9tVvoyKs',
-    appId: '1:891297600601:web:2deec1ab1852b9dec58d48',
+    appId: '1:891297600601:web:cefd08a2d83a5246c58d48',
     messagingSenderId: '891297600601',
     projectId: 'z1-app-a10ff',
     authDomain: 'z1-app-a10ff.firebaseapp.com',
     storageBucket: 'z1-app-a10ff.appspot.com',
+    measurementId: 'G-RWRWPJGEJB',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBC1b8FIbue50TOYp2gWs73_YT2sVYD8Bs',
-    appId: '1:891297600601:android:dbb95d5fdb089adcc58d48',
+    appId: '1:891297600601:android:68f802d8cc65adebc58d48',
     messagingSenderId: '891297600601',
     projectId: 'z1-app-a10ff',
     storageBucket: 'z1-app-a10ff.appspot.com',
@@ -65,10 +66,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAwyfF4YsiApd1hXUWtLGXd-C5B0vy_wlU',
-    appId: '1:891297600601:ios:36dd3e0fcbd462ffc58d48',
+    appId: '1:891297600601:ios:488060cd5802df20c58d48',
     messagingSenderId: '891297600601',
     projectId: 'z1-app-a10ff',
     storageBucket: 'z1-app-a10ff.appspot.com',
+    androidClientId: '891297600601-04uf1i2kun7593f7flq1d1apuesfotv7.apps.googleusercontent.com',
     iosClientId: '891297600601-kqrjchc4nhjchft7ud981il1god0fr41.apps.googleusercontent.com',
     iosBundleId: 'com.example.z1App',
   );
