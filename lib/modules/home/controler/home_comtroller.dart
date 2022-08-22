@@ -13,15 +13,16 @@ import '../model/app_model/app_models.dart';
 
 class HomeController extends GetxController {
   final homeListModel = <HomeModel>[].obs;
-
   final listApp = HomeModel().obs;
   final isLoding = false.obs;
   final listAppuse = ''.obs;
+  final isLodingminiApp=false.obs;
   List<DocumentSnapshot<HomeModel>> results = [];
-  getApplist() {
+  Future<List<HomeModel>> getApplist()async {
     isLoding(true);
-    homeListModel.value.clear();
-    FirebaseFirestore.instance
+    List<HomeModel> homeList = <HomeModel>[];
+    
+    await FirebaseFirestore.instance
         .collection('chip_app')
         .doc("o4dykIEJQzg3AoZ1rqOk")
         .get()
@@ -31,17 +32,25 @@ class HomeController extends GetxController {
           debugPrint("------------->hello");
 
           var item = HomeModel.fromJson(e);
-          homeListModel.value.add(item);
+          homeList.add(item);
+          homeListModel.value = homeList;
+          
         },
       ).toList();
+      
 
       debugPrint("------------->hello list = ${homeListModel.length}");
 
       debugPrint("list  : $homeListModel");
       isLoding(false);
+    
+
     }).onError((error, stackTrace) {
       debugPrint("#####_-------> ${error.toString()}");
       isLoding(false);
     });
+    return homeListModel.value;
+    
   }
+  
 }

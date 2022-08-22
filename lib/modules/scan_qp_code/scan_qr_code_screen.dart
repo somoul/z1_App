@@ -28,12 +28,12 @@ bool? isFlashOn = false;
 // bool? isFlashOn = false;
 
 class _ScanQrCodeSceenState extends State<ScanQrCodeSceen> {
-  @override
-  void initState() {
-    cameraController.start();
-    cameraController.switchCamera();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   cameraController.start();
+  //   cameraController.switchCamera();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {

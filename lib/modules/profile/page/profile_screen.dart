@@ -270,7 +270,7 @@ class ProfileScreen extends StatelessWidget {
                              LocalData.removeCurrentUser() ;
                            context.navigateNamedTo('signInScreen');
                               //  homeListModel.clear();
-                               _homeController.homeListModel.value.clear();
+                               _homeController.homeListModel.value;
                             _bottomBarController.selecIndexButtomNavigetion.value=1;
                           // debugPrint(' ======  _homeController.homeListModel : ${ _homeController.homeListModel.length}');
                           },

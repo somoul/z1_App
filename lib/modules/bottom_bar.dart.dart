@@ -5,14 +5,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
 // import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:z1_app/configs/app_constant.dart';
 import 'package:z1_app/utils/app_color/app_colors.dart';
 
 import '../configs/router/auto_route.gr.dart';
-import '../widgets/home/custom_cart.dart';
 import 'controler_bottom_bar.dart/controller_bar.dart';
 import 'home/controler/home_comtroller.dart';
 
@@ -31,19 +28,16 @@ class _BottomBarState extends State<BottomBar> {
   @override
   void initState() {
     super.initState(); //appList
-   //_homeController.getApplist();
+    //_homeController.getApplist();
   }
 
   @override
   Widget build(BuildContext context) {
-    final cameraController = MobileScannerController();
-    final _homeController = Get.put(HomeController());
-
     final _bottomBarController = Get.put(BottomBarController());
-    cameraController.dispose();
-    return AutoTabsRouter(
-        // animationDuration: const Duration(seconds: 0),
-        //   resizeToAvoidBottomInset: false,
+    // cameraController.dispose();
+    return AutoTabsScaffold(
+        animationDuration: const Duration(seconds: 0),
+        resizeToAvoidBottomInset: false,
         routes: const [
           ScanQrCodeSceen(),
           HomeScreen(),

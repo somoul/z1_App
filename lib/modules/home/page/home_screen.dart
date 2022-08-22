@@ -1,27 +1,40 @@
 // ignore_for_file: unused_local_variable, no_leading_underscores_for_local_identifiers, invalid_use_of_protected_member, deprecated_member_use
 
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/app_color/app_colors.dart';
+import '../../../utils/mini_show_app/mini_app_screen.dart';
 import '../../../widgets/custom_default_size_web.dart';
 import '../../../widgets/home/custom_cart.dart';
 import '../../controler_bottom_bar.dart/controller_bar.dart';
-import '../../scan_qp_code/scan_qr_code_screen.dart';
 import '../controler/home_comtroller.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final cameraController = MobileScannerController();
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final cameraController = MobileScannerController();
     final _homeController = Get.put(HomeController());
     final _bottomBarController = Get.put(BottomBarController());
+
+  @override
+  void initState() {
+    _homeController.getApplist();
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    
     return CustomDefaultSizeWeb(
         child: Scaffold(
             backgroundColor:
@@ -37,13 +50,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      cameraController.start();
-                      cameraController.switchCamera();
+                      // context.navigateNamedTo('QrcodeScreen');
+                      // cameraController.start();
+                      // cameraController.switchCamera();
                       //context.navigateNamedTo('loginQrCodeScreen');
                       // context.navigateBack();
                       // loginController.linkScranQRCode.value = '';
                       // context.navigateBack();
-                      // context.navigateNamedTo('loginQrCodeScreen');
+                      context.navigateNamedTo('qrcodeScreen');
                       //  context.navigateNamedTo('scanqrcodesceen');
                     },
                     child: Image.asset(
@@ -95,24 +109,15 @@ class HomeScreen extends StatelessWidget {
                           colors: _homeController
                               .homeListModel.value[index].app_color,
                           onTap: () async {
-                            String url =
-                                '${_homeController.homeListModel[index].app_link}';
-                            // "https://online-quiz-75798.firebaseapp.com";
-                            if (await canLaunch(url)) {
-                              await launch(url,
-                                  forceSafariVC: true,
-                                  forceWebView: true,
-                                  enableJavaScript: true);
-                            }
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MiniAppScreen(
+                                        linkApp:
+                                            '${_homeController.homeListModel[index].app_link}',
+                                      )),
+                            );
                           });
-                      // Container(
-                      //   height: 50,width: 50,
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.red,
-                      //    // image:DecorationImage(image:NetworkImage(_homeModel.urlImage.toString()))
-                      //   ),
-                      //   child: Text('${_homeController.homeListModel[index].app_name}'),
-                      //   );//CustomCart();
                     }))));
   }
 }
