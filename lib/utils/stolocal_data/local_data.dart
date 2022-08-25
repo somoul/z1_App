@@ -1,16 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../modules/profile/controller/profile_controller.dart';
+final _profileController=Get.put(ProfileController());
 class LocalData {
+  
   //CurrentUser=============================
   static Future<String> getCurrentUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String value = pref.getString('current_user') ?? "";
+    _profileController.token.value=value;
+    debugPrint('================ value11:$value');
     return value;
   }
 
   static Future<void> storeCurrentUser(String token) async {
+    _profileController.token.value=token;
+    debugPrint('================ value222:$token');
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('current_user', token);
+    
   }
 
   static Future<void> removeCurrentUser() async {

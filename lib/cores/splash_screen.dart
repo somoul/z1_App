@@ -3,10 +3,12 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../modules/home/controler/home_comtroller.dart';
 import '../modules/profile/controller/profile_controller.dart';
 import '../utils/stolocal_data/local_data.dart';
 
@@ -18,24 +20,38 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-String token='';
+  String token = '';
   final _profileController = Get.put(ProfileController());
+  final _homeController = Get.put(HomeController());
   @override
   void initState() {
-    
-    Timer(const Duration(seconds: 3), ()async {
-    token= await LocalData.getCurrentUser() ;
-       debugPrint("22===== 1111 show token :$token" );
-       if(token!='')
-       {
-         _profileController.getDataProfile(token);
-          context.navigateNamedTo("");
+    Future.delayed(const Duration(seconds: 3), () async {
+      token = await LocalData.getCurrentUser();
+      debugPrint("22===== 1111 show token :$token");
+      if (token != '') {
+        var collection = FirebaseFirestore.instance.collection('user');
+        var querySnapshot = await collection.get();
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          if (token == await data['token']) {
+            _profileController.token.value = token;
+            _profileController.imageProfile.value = await data['image_profile'];
+            _homeController.bree.value = await data['bree'];
+            _homeController.bree_token.value = await data['bree_token'];
+            debugPrint(
+                '==========bree  : ${_homeController.bree.value}. ==bree_token: ${_homeController.bree_token.value}. ');
 
-       }else{
-         context.navigateNamedTo('onboardingScreen');
+            // _profileController.getDataProfile(stoToken.value);
 
-       }
-
+          }
+        }
+        // _profileController.getDataProfile(token);
+        Timer(const Duration(seconds: 0), () async {
+          await context.navigateNamedTo("");
+        });
+      } else {
+        context.navigateNamedTo('onboardingScreen');
+      }
     });
     super.initState();
   } // SlashScreen({Key? key}) : super(key: key);
@@ -49,24 +65,25 @@ String token='';
         width: double.infinity,
         color: Colors.white,
         child: Column(
-         
           children: [
             const Spacer(),
-    
             Padding(
               padding: const EdgeInsets.only(top: 60),
               child: Container(
-                height:200,
-                width: 200,
-              
-                  child:Image.asset('asset/image/image_png/z1_logo_px.png',width: 150,height: 150,)
-              //      Image.svg(,
-              //   height: 165,
-              //   width: 165,
-              // ) //Text('Show SlashScreen ')
+                  height: 200,
+                  width: 200,
+                  child: Image.asset(
+                    'asset/image/image_png/z1_logo_px.png',
+                    width: 150,
+                    height: 150,
+                  )
+                  //      Image.svg(,
+                  //   height: 165,
+                  //   width: 165,
+                  // ) //Text('Show SlashScreen ')
                   ),
             ),
-               const Spacer(),
+            const Spacer(),
             const Padding(
               padding: EdgeInsets.only(bottom: 100),
               child: CircularProgressIndicator(

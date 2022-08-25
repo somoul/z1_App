@@ -354,10 +354,12 @@ class SignInScreen extends StatelessWidget {
                                     false &&
                                 _loginController.isObscureTextEmail.value ==
                                     false) {
+                                      debugPrint('========1111');
                               _loginController.login(
                                   _emailTextEditingController.text,
                                   _passwordTextEditingController.text,
                                   context);
+                                  debugPrint('========222');
                               // context.navigateNamedTo('/test');
                               // _loginController
                               //     .signInController(

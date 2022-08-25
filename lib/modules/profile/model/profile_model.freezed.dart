@@ -20,12 +20,13 @@ ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProfileModel {
-  String? get last_name => throw _privateConstructorUsedError;
-  String? get first_name => throw _privateConstructorUsedError;
+  String? get bree => throw _privateConstructorUsedError;
+  String? get bree_token => throw _privateConstructorUsedError;
   String? get emaill => throw _privateConstructorUsedError;
+  String? get first_name => throw _privateConstructorUsedError;
   String? get image_profile => throw _privateConstructorUsedError;
+  String? get last_name => throw _privateConstructorUsedError;
   String? get pincode => throw _privateConstructorUsedError;
-  String? get bree_admin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,12 +40,13 @@ abstract class $ProfileModelCopyWith<$Res> {
           ProfileModel value, $Res Function(ProfileModel) then) =
       _$ProfileModelCopyWithImpl<$Res>;
   $Res call(
-      {String? last_name,
-      String? first_name,
+      {String? bree,
+      String? bree_token,
       String? emaill,
+      String? first_name,
       String? image_profile,
-      String? pincode,
-      String? bree_admin});
+      String? last_name,
+      String? pincode});
 }
 
 /// @nodoc
@@ -57,37 +59,42 @@ class _$ProfileModelCopyWithImpl<$Res> implements $ProfileModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? last_name = freezed,
-    Object? first_name = freezed,
+    Object? bree = freezed,
+    Object? bree_token = freezed,
     Object? emaill = freezed,
+    Object? first_name = freezed,
     Object? image_profile = freezed,
+    Object? last_name = freezed,
     Object? pincode = freezed,
-    Object? bree_admin = freezed,
   }) {
     return _then(_value.copyWith(
-      last_name: last_name == freezed
-          ? _value.last_name
-          : last_name // ignore: cast_nullable_to_non_nullable
+      bree: bree == freezed
+          ? _value.bree
+          : bree // ignore: cast_nullable_to_non_nullable
               as String?,
-      first_name: first_name == freezed
-          ? _value.first_name
-          : first_name // ignore: cast_nullable_to_non_nullable
+      bree_token: bree_token == freezed
+          ? _value.bree_token
+          : bree_token // ignore: cast_nullable_to_non_nullable
               as String?,
       emaill: emaill == freezed
           ? _value.emaill
           : emaill // ignore: cast_nullable_to_non_nullable
               as String?,
+      first_name: first_name == freezed
+          ? _value.first_name
+          : first_name // ignore: cast_nullable_to_non_nullable
+              as String?,
       image_profile: image_profile == freezed
           ? _value.image_profile
           : image_profile // ignore: cast_nullable_to_non_nullable
               as String?,
+      last_name: last_name == freezed
+          ? _value.last_name
+          : last_name // ignore: cast_nullable_to_non_nullable
+              as String?,
       pincode: pincode == freezed
           ? _value.pincode
           : pincode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bree_admin: bree_admin == freezed
-          ? _value.bree_admin
-          : bree_admin // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -101,12 +108,13 @@ abstract class _$$_ProfileModelCopyWith<$Res>
       __$$_ProfileModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? last_name,
-      String? first_name,
+      {String? bree,
+      String? bree_token,
       String? emaill,
+      String? first_name,
       String? image_profile,
-      String? pincode,
-      String? bree_admin});
+      String? last_name,
+      String? pincode});
 }
 
 /// @nodoc
@@ -122,37 +130,42 @@ class __$$_ProfileModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? last_name = freezed,
-    Object? first_name = freezed,
+    Object? bree = freezed,
+    Object? bree_token = freezed,
     Object? emaill = freezed,
+    Object? first_name = freezed,
     Object? image_profile = freezed,
+    Object? last_name = freezed,
     Object? pincode = freezed,
-    Object? bree_admin = freezed,
   }) {
     return _then(_$_ProfileModel(
-      last_name: last_name == freezed
-          ? _value.last_name
-          : last_name // ignore: cast_nullable_to_non_nullable
+      bree: bree == freezed
+          ? _value.bree
+          : bree // ignore: cast_nullable_to_non_nullable
               as String?,
-      first_name: first_name == freezed
-          ? _value.first_name
-          : first_name // ignore: cast_nullable_to_non_nullable
+      bree_token: bree_token == freezed
+          ? _value.bree_token
+          : bree_token // ignore: cast_nullable_to_non_nullable
               as String?,
       emaill: emaill == freezed
           ? _value.emaill
           : emaill // ignore: cast_nullable_to_non_nullable
               as String?,
+      first_name: first_name == freezed
+          ? _value.first_name
+          : first_name // ignore: cast_nullable_to_non_nullable
+              as String?,
       image_profile: image_profile == freezed
           ? _value.image_profile
           : image_profile // ignore: cast_nullable_to_non_nullable
               as String?,
+      last_name: last_name == freezed
+          ? _value.last_name
+          : last_name // ignore: cast_nullable_to_non_nullable
+              as String?,
       pincode: pincode == freezed
           ? _value.pincode
           : pincode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bree_admin: bree_admin == freezed
-          ? _value.bree_admin
-          : bree_admin // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -162,32 +175,35 @@ class __$$_ProfileModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProfileModel implements _ProfileModel {
   _$_ProfileModel(
-      {this.last_name,
-      this.first_name,
+      {this.bree,
+      this.bree_token,
       this.emaill,
+      this.first_name,
       this.image_profile,
-      this.pincode,
-      this.bree_admin});
+      this.last_name,
+      this.pincode});
 
   factory _$_ProfileModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileModelFromJson(json);
 
   @override
-  final String? last_name;
+  final String? bree;
   @override
-  final String? first_name;
+  final String? bree_token;
   @override
   final String? emaill;
   @override
+  final String? first_name;
+  @override
   final String? image_profile;
   @override
-  final String? pincode;
+  final String? last_name;
   @override
-  final String? bree_admin;
+  final String? pincode;
 
   @override
   String toString() {
-    return 'ProfileModel(last_name: $last_name, first_name: $first_name, emaill: $emaill, image_profile: $image_profile, pincode: $pincode, bree_admin: $bree_admin)';
+    return 'ProfileModel(bree: $bree, bree_token: $bree_token, emaill: $emaill, first_name: $first_name, image_profile: $image_profile, last_name: $last_name, pincode: $pincode)';
   }
 
   @override
@@ -195,27 +211,29 @@ class _$_ProfileModel implements _ProfileModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProfileModel &&
-            const DeepCollectionEquality().equals(other.last_name, last_name) &&
+            const DeepCollectionEquality().equals(other.bree, bree) &&
             const DeepCollectionEquality()
-                .equals(other.first_name, first_name) &&
+                .equals(other.bree_token, bree_token) &&
             const DeepCollectionEquality().equals(other.emaill, emaill) &&
             const DeepCollectionEquality()
-                .equals(other.image_profile, image_profile) &&
-            const DeepCollectionEquality().equals(other.pincode, pincode) &&
+                .equals(other.first_name, first_name) &&
             const DeepCollectionEquality()
-                .equals(other.bree_admin, bree_admin));
+                .equals(other.image_profile, image_profile) &&
+            const DeepCollectionEquality().equals(other.last_name, last_name) &&
+            const DeepCollectionEquality().equals(other.pincode, pincode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(last_name),
-      const DeepCollectionEquality().hash(first_name),
+      const DeepCollectionEquality().hash(bree),
+      const DeepCollectionEquality().hash(bree_token),
       const DeepCollectionEquality().hash(emaill),
+      const DeepCollectionEquality().hash(first_name),
       const DeepCollectionEquality().hash(image_profile),
-      const DeepCollectionEquality().hash(pincode),
-      const DeepCollectionEquality().hash(bree_admin));
+      const DeepCollectionEquality().hash(last_name),
+      const DeepCollectionEquality().hash(pincode));
 
   @JsonKey(ignore: true)
   @override
@@ -232,28 +250,31 @@ class _$_ProfileModel implements _ProfileModel {
 
 abstract class _ProfileModel implements ProfileModel {
   factory _ProfileModel(
-      {final String? last_name,
-      final String? first_name,
+      {final String? bree,
+      final String? bree_token,
       final String? emaill,
+      final String? first_name,
       final String? image_profile,
-      final String? pincode,
-      final String? bree_admin}) = _$_ProfileModel;
+      final String? last_name,
+      final String? pincode}) = _$_ProfileModel;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$_ProfileModel.fromJson;
 
   @override
-  String? get last_name;
+  String? get bree;
   @override
-  String? get first_name;
+  String? get bree_token;
   @override
   String? get emaill;
   @override
+  String? get first_name;
+  @override
   String? get image_profile;
   @override
-  String? get pincode;
+  String? get last_name;
   @override
-  String? get bree_admin;
+  String? get pincode;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileModelCopyWith<_$_ProfileModel> get copyWith =>

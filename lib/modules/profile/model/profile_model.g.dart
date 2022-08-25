@@ -8,20 +8,22 @@ part of 'profile_model.dart';
 
 _$_ProfileModel _$$_ProfileModelFromJson(Map<String, dynamic> json) =>
     _$_ProfileModel(
-      last_name: json['last_name'] as String?,
-      first_name: json['first_name'] as String?,
+      bree: json['bree'] as String?,
+      bree_token: json['bree_token'] as String?,
       emaill: json['emaill'] as String?,
+      first_name: json['first_name'] as String?,
       image_profile: json['image_profile'] as String?,
+      last_name: json['last_name'] as String?,
       pincode: json['pincode'] as String?,
-      bree_admin: json['bree_admin'] as String?,
     );
 
 Map<String, dynamic> _$$_ProfileModelToJson(_$_ProfileModel instance) =>
     <String, dynamic>{
-      'last_name': instance.last_name,
-      'first_name': instance.first_name,
+      'bree': instance.bree,
+      'bree_token': instance.bree_token,
       'emaill': instance.emaill,
+      'first_name': instance.first_name,
       'image_profile': instance.image_profile,
+      'last_name': instance.last_name,
       'pincode': instance.pincode,
-      'bree_admin': instance.bree_admin,
     };

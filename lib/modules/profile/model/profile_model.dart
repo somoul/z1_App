@@ -6,12 +6,13 @@ part 'profile_model.g.dart';
 @freezed
 class ProfileModel with _$ProfileModel {
   factory ProfileModel({
-    String? last_name ,
-    String? first_name,
+    String? bree,
+    String? bree_token,
     String? emaill,
+    String? first_name,
     String? image_profile,
-     String? pincode,
-     String? bree_admin,
+    String? last_name,
+    String? pincode,
   }) = _ProfileModel;
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) =>

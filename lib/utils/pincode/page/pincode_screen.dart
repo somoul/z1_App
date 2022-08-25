@@ -42,7 +42,7 @@ class PinCodeScreen extends StatelessWidget {
               ),
               passwordEnteredCallback: (pincode) {
                 _pinCodeController.lognInPincode(pincode, context);
-                debugPrint('======== show PinCode :$pincode===========');
+               // debugPrint('======== show PinCode :$pincode===========');
                 _verificationNotifier.add(false);
                 if (pincode == '1234') {
                   //_verificationNotifier.add(true);
@@ -70,11 +70,11 @@ class PinCodeScreen extends StatelessWidget {
                           timer.cancel();
                         }
 
-                        debugPrint(
-                            ' ======= Show  time :${_pinCodeController.time.value - 1}====');
+                        // debugPrint(
+                        //     ' ======= Show  time :${_pinCodeController.time.value - 1}====');
 
-                        debugPrint(
-                            ' ======= Show numberTimmerDelayed  :${_pinCodeController.numberTimmerDelayed.value}====');
+                        // debugPrint(
+                        //     ' ======= Show numberTimmerDelayed  :${_pinCodeController.numberTimmerDelayed.value}====');
                       },
                     );
                   }

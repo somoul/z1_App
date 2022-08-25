@@ -22,7 +22,7 @@ class LoginQrCodeScreen extends StatelessWidget {
     QRViewController? _qrViewController;
     final cameraController = MobileScannerController();
     bool? isFlashOn = false;
-    debugPrint('====== Show cameraController :$cameraController====');
+    // debugPrint('====== Show cameraController :$cameraController====');
     cameraController.start();
     cameraController.switchCamera();
     return Scaffold(
