@@ -12,6 +12,7 @@ import '../../modules/scan_qp_code/scan_qr_code_screen.dart';
 import '../../utils/login/page/login_qrcode_screen.dart';
 import '../../utils/login/page/login_screen.dart';
 import '../../utils/pincode/page/pincode_screen.dart';
+import '../../utils/show_image_qrcode/qrcode.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -63,6 +64,13 @@ import '../../utils/pincode/page/pincode_screen.dart';
         page: ProfileScreen,
       ),
     ]),
+   
+   CustomRoute(
+      page: QrcodeScreen,
+      path: 'qrcodeScreen',
+      name: 'QrcodeScreen'
+      // initial: true,
+    ),
     AutoRoute(
       path: "viewProfile",
       name: "ViewProfile",

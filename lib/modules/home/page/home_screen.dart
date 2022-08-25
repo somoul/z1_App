@@ -30,13 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final _bottomBarController = Get.put(BottomBarController());
   @override
   void initState() {
-    //   Timer(const Duration(seconds: 0), () async {
-
-    //  await
     LocalData.getCurrentUser();
-    // });
 
-    // TODO: implement initState
     super.initState();
   }
 
@@ -57,7 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: GestureDetector(
                     onTap: () {
- 
                       context.navigateNamedTo('qrcodeScreen');
                       //  context.navigateNamedTo('scanqrcodesceen');
                     },
