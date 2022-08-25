@@ -57,13 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      // context.navigateNamedTo('QrcodeScreen');
-                      // cameraController.start();
-                      // cameraController.switchCamera();
-                      //context.navigateNamedTo('loginQrCodeScreen');
-                      // context.navigateBack();
-                      // loginController.linkScranQRCode.value = '';
-                      // context.navigateBack();
+ 
                       context.navigateNamedTo('qrcodeScreen');
                       //  context.navigateNamedTo('scanqrcodesceen');
                     },

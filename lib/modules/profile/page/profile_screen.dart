@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers, invalid_use_of_protected_member, unrelated_type_equality_checks, unnecessary_string_interpolations
+// ignore_for_file: no_leading_underscores_for_local_identifiers, invalid_use_of_protected_member, unrelated_type_equality_checks, unnecessary_string_interpolations, prefer_const_constructors
 
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,9 +50,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: GestureDetector(
                   //viewProfile
                   onTap: () {
-                    LocalData.removeCurrentUser();
-                    context.navigateNamedTo('signInScreen');
-                    //context.navigateNamedTo('viewProfile');
+                   
+                    context.navigateNamedTo('viewProfile');
                   },
                   child: Container(
                     height: 20,
@@ -144,6 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Column(
                             children: [
+                              SizedBox(height: 7,),
                               Row(
                                 children: [
                                   Text(
