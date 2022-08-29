@@ -43,43 +43,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBar: AppBar(
           backgroundColor: AppColor.buttonColor.withOpacity(0.8),
           actions: [
-            Obx(
-              () => Padding(
-                padding:
-                    const EdgeInsets.only(right: 13, top: 4.5, bottom: 8.5),
-                child: GestureDetector(
-                  //viewProfile
-                  onTap: () {
-                   
-                    context.navigateNamedTo('viewProfile');
-                  },
-                  child: Container(
-                    height: 20,
-                    width: 41,
-                    decoration: BoxDecoration(
-                        // /  color: Colors.red,
-                        borderRadius: BorderRadius.circular(60),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                              _profileController.imageProfile.value.isNotEmpty
-                                  ? '${_profileController.imageProfile.value}'
-                                  : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2wqLv2VOrfZeEAO3jSHxvmEL7eZA-VeJ_L8-L3q7gdcLzV6YeRGHpWoCr06dsriPxvYY&usqp=CAU',
-                            ),
-                            fit: BoxFit.cover),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.white,
-                              spreadRadius: 0.4,
-                              blurRadius: 0.4),
-                          BoxShadow(
-                              color: Colors.black,
-                              spreadRadius: 0.7,
-                              blurRadius: 0.7),
-                        ]),
-                  ),
+            Padding(
+              padding: const EdgeInsets.only(right: 13, top: 4.5, bottom: 8.5),
+              child: GestureDetector(
+                //viewProfile
+                onTap: () {
+                  context.navigateNamedTo('viewProfile');
+                },
+                child: Container(
+                  height: 20,
+                  width: 41,
+                  decoration: BoxDecoration(
+                      // /  color: Colors.red,
+                      borderRadius: BorderRadius.circular(60),
+                      image: DecorationImage(
+                          image: NetworkImage(
+                            _profileController
+                                        .profileModel.value.image_profile !=
+                                    ''
+                                ? '${_profileController.profileModel.value.image_profile}'
+                                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2wqLv2VOrfZeEAO3jSHxvmEL7eZA-VeJ_L8-L3q7gdcLzV6YeRGHpWoCr06dsriPxvYY&usqp=CAU',
+                          ),
+                          fit: BoxFit.cover),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.white,
+                            spreadRadius: 0.4,
+                            blurRadius: 0.4),
+                        BoxShadow(
+                            color: Colors.black,
+                            spreadRadius: 0.7,
+                            blurRadius: 0.7),
+                      ]),
                 ),
               ),
-            )
+            ),
           ],
           leading: Container(),
           //  IconButton(
@@ -108,6 +106,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             try {
               _profileController.profileModel.value = ProfileModel.fromJson(
                   snapshot.data?.data() as Map<String, dynamic>);
+              _profileController.imageProfile.value =
+                  _profileController.profileModel.value.image_profile!;
             } catch (e) {
               debugPrint('===== Show Error profile :$e');
             }
@@ -143,7 +143,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Column(
                             children: [
-                              SizedBox(height: 7,),
+                              SizedBox(
+                                height: 7,
+                              ),
                               Row(
                                 children: [
                                   Text(

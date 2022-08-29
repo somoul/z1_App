@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../modules/profile/controller/profile_controller.dart';
 import '../app_color/app_colors.dart';
 
 class QrcodeScreen extends StatelessWidget {
@@ -10,8 +12,9 @@ class QrcodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _profileController=Get.put(ProfileController());
     return Scaffold(
-      // /backgroundColor: Colors.white.withOpacity(0.99),
+      backgroundColor: Colors.white.withOpacity(0.99),
       appBar: AppBar(
         backgroundColor: AppColor.buttonColor.withOpacity(0.8),
         leading: IconButton(
@@ -26,15 +29,6 @@ class QrcodeScreen extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Positioned(
-              top: 70,
-              left: 120,
-              child: Container(
-                height: 130,
-                width: 135,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(60)),
-              )),
           Padding(
             padding: const EdgeInsets.only(bottom: 120),
             child: Stack(
@@ -44,7 +38,7 @@ class QrcodeScreen extends StatelessWidget {
                 ),
                 Positioned(
                   left: 2,
-                  top: 180,
+                  top: 162,
                   bottom: 0,
                   right: 2,
                   child: Column(
@@ -56,19 +50,51 @@ class QrcodeScreen extends StatelessWidget {
                         child: Image.network(
                           'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png',
                           alignment: Alignment.center,
-                          height: 300,
+                          height: 325,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Positioned(
-                    top: 462,
-                    left: 140,
-                    child: Center(child: Text('@SOmoulAbraham'))),
+                Positioned(
+                    top: 470,
+                    left: 100,
+                    child: Center(
+                        child: Text(
+                      '@SOMOULABRAHAM',
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                          color: AppColor.backgroundColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),
+                    ))),
               ],
             ),
           ),
+          Positioned(
+              top: 40,
+              left: 122,
+              right: 122,
+              child: Container(
+                height: 148,
+                width: 146,
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(80),
+                    image:  DecorationImage(
+                        image:NetworkImage(
+                              _profileController.imageProfile.value.isNotEmpty
+                                  ? '${_profileController.imageProfile.value}'
+                                  : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2wqLv2VOrfZeEAO3jSHxvmEL7eZA-VeJ_L8-L3q7gdcLzV6YeRGHpWoCr06dsriPxvYY&usqp=CAU',
+                        ),
+                        fit: BoxFit.fitHeight),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 0.5,
+                        spreadRadius: 0.5,
+                        color: Colors.white12.withOpacity(0.4),
+                      )
+                    ]),
+              )),
         ],
       ),
     );
@@ -99,7 +125,7 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
       alignment: Alignment.center,
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.black12,
+            color: Colors.blue.withOpacity(0.0001),
             borderRadius: BorderRadius.circular(20),
             boxShadow: const [
               BoxShadow(
@@ -121,7 +147,7 @@ class _QRScannerOverlayState extends State<QRScannerOverlay> {
             height: kIsWeb
                 ? scanArea + 47.5
                 : Platform.isIOS
-                    ? scanArea + 35
+                    ? scanArea + 70
                     : scanArea + 47.09,
           ),
         ),
