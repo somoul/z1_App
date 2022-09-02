@@ -24,6 +24,7 @@ mixin _$HomeModel {
   String? get app_link => throw _privateConstructorUsedError;
   String? get link_image => throw _privateConstructorUsedError;
   String? get app_color => throw _privateConstructorUsedError;
+  bool? get isUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +40,8 @@ abstract class $HomeModelCopyWith<$Res> {
       {String? app_name,
       String? app_link,
       String? link_image,
-      String? app_color});
+      String? app_color,
+      bool? isUser});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$HomeModelCopyWithImpl<$Res> implements $HomeModelCopyWith<$Res> {
     Object? app_link = freezed,
     Object? link_image = freezed,
     Object? app_color = freezed,
+    Object? isUser = freezed,
   }) {
     return _then(_value.copyWith(
       app_name: app_name == freezed
@@ -74,6 +77,10 @@ class _$HomeModelCopyWithImpl<$Res> implements $HomeModelCopyWith<$Res> {
           ? _value.app_color
           : app_color // ignore: cast_nullable_to_non_nullable
               as String?,
+      isUser: isUser == freezed
+          ? _value.isUser
+          : isUser // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -88,7 +95,8 @@ abstract class _$$_HomeModelCopyWith<$Res> implements $HomeModelCopyWith<$Res> {
       {String? app_name,
       String? app_link,
       String? link_image,
-      String? app_color});
+      String? app_color,
+      bool? isUser});
 }
 
 /// @nodoc
@@ -107,6 +115,7 @@ class __$$_HomeModelCopyWithImpl<$Res> extends _$HomeModelCopyWithImpl<$Res>
     Object? app_link = freezed,
     Object? link_image = freezed,
     Object? app_color = freezed,
+    Object? isUser = freezed,
   }) {
     return _then(_$_HomeModel(
       app_name: app_name == freezed
@@ -125,6 +134,10 @@ class __$$_HomeModelCopyWithImpl<$Res> extends _$HomeModelCopyWithImpl<$Res>
           ? _value.app_color
           : app_color // ignore: cast_nullable_to_non_nullable
               as String?,
+      isUser: isUser == freezed
+          ? _value.isUser
+          : isUser // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -132,7 +145,12 @@ class __$$_HomeModelCopyWithImpl<$Res> extends _$HomeModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HomeModel implements _HomeModel {
-  _$_HomeModel({this.app_name, this.app_link, this.link_image, this.app_color});
+  _$_HomeModel(
+      {this.app_name,
+      this.app_link,
+      this.link_image,
+      this.app_color,
+      this.isUser});
 
   factory _$_HomeModel.fromJson(Map<String, dynamic> json) =>
       _$$_HomeModelFromJson(json);
@@ -145,10 +163,12 @@ class _$_HomeModel implements _HomeModel {
   final String? link_image;
   @override
   final String? app_color;
+  @override
+  final bool? isUser;
 
   @override
   String toString() {
-    return 'HomeModel(app_name: $app_name, app_link: $app_link, link_image: $link_image, app_color: $app_color)';
+    return 'HomeModel(app_name: $app_name, app_link: $app_link, link_image: $link_image, app_color: $app_color, isUser: $isUser)';
   }
 
   @override
@@ -160,7 +180,8 @@ class _$_HomeModel implements _HomeModel {
             const DeepCollectionEquality().equals(other.app_link, app_link) &&
             const DeepCollectionEquality()
                 .equals(other.link_image, link_image) &&
-            const DeepCollectionEquality().equals(other.app_color, app_color));
+            const DeepCollectionEquality().equals(other.app_color, app_color) &&
+            const DeepCollectionEquality().equals(other.isUser, isUser));
   }
 
   @JsonKey(ignore: true)
@@ -170,7 +191,8 @@ class _$_HomeModel implements _HomeModel {
       const DeepCollectionEquality().hash(app_name),
       const DeepCollectionEquality().hash(app_link),
       const DeepCollectionEquality().hash(link_image),
-      const DeepCollectionEquality().hash(app_color));
+      const DeepCollectionEquality().hash(app_color),
+      const DeepCollectionEquality().hash(isUser));
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +212,8 @@ abstract class _HomeModel implements HomeModel {
       {final String? app_name,
       final String? app_link,
       final String? link_image,
-      final String? app_color}) = _$_HomeModel;
+      final String? app_color,
+      final bool? isUser}) = _$_HomeModel;
 
   factory _HomeModel.fromJson(Map<String, dynamic> json) =
       _$_HomeModel.fromJson;
@@ -203,6 +226,8 @@ abstract class _HomeModel implements HomeModel {
   String? get link_image;
   @override
   String? get app_color;
+  @override
+  bool? get isUser;
   @override
   @JsonKey(ignore: true)
   _$$_HomeModelCopyWith<_$_HomeModel> get copyWith =>

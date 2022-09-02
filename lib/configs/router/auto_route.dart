@@ -5,6 +5,7 @@ import 'package:z1_app/modules/profile/page/viewprofile_screen.dart';
 
 import '../../cores/splash_screen.dart';
 import '../../cores/walk_though/page/onborading_screen.dart';
+import '../../modules/home/page/add_app_screen.dart';
 import '../../modules/home/page/home_screen.dart';
 import '../../modules/profile/page/profile_screen.dart';
 import '../../modules/qr_screen/screen/qr_screen.dart';
@@ -64,7 +65,13 @@ import '../../utils/show_image_qrcode/qrcode.dart';
         page: ProfileScreen,
       ),
     ]),
-   
+   //AddAppScreen
+   CustomRoute(
+      page: AddAppScreen,
+      path: 'addAppScreen',
+      name: 'AddAppScreen'
+      // initial: true,
+    ),
    CustomRoute(
       page: QrcodeScreen,
       path: 'qrcodeScreen',

@@ -22,7 +22,7 @@ ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
 mixin _$ProfileModel {
   String? get bree => throw _privateConstructorUsedError;
   String? get bree_token => throw _privateConstructorUsedError;
-  String? get emaill => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String? get first_name => throw _privateConstructorUsedError;
   String? get image_profile => throw _privateConstructorUsedError;
   String? get last_name => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $ProfileModelCopyWith<$Res> {
   $Res call(
       {String? bree,
       String? bree_token,
-      String? emaill,
+      String? email,
       String? first_name,
       String? image_profile,
       String? last_name,
@@ -61,7 +61,7 @@ class _$ProfileModelCopyWithImpl<$Res> implements $ProfileModelCopyWith<$Res> {
   $Res call({
     Object? bree = freezed,
     Object? bree_token = freezed,
-    Object? emaill = freezed,
+    Object? email = freezed,
     Object? first_name = freezed,
     Object? image_profile = freezed,
     Object? last_name = freezed,
@@ -76,9 +76,9 @@ class _$ProfileModelCopyWithImpl<$Res> implements $ProfileModelCopyWith<$Res> {
           ? _value.bree_token
           : bree_token // ignore: cast_nullable_to_non_nullable
               as String?,
-      emaill: emaill == freezed
-          ? _value.emaill
-          : emaill // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       first_name: first_name == freezed
           ? _value.first_name
@@ -110,7 +110,7 @@ abstract class _$$_ProfileModelCopyWith<$Res>
   $Res call(
       {String? bree,
       String? bree_token,
-      String? emaill,
+      String? email,
       String? first_name,
       String? image_profile,
       String? last_name,
@@ -132,7 +132,7 @@ class __$$_ProfileModelCopyWithImpl<$Res>
   $Res call({
     Object? bree = freezed,
     Object? bree_token = freezed,
-    Object? emaill = freezed,
+    Object? email = freezed,
     Object? first_name = freezed,
     Object? image_profile = freezed,
     Object? last_name = freezed,
@@ -147,9 +147,9 @@ class __$$_ProfileModelCopyWithImpl<$Res>
           ? _value.bree_token
           : bree_token // ignore: cast_nullable_to_non_nullable
               as String?,
-      emaill: emaill == freezed
-          ? _value.emaill
-          : emaill // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       first_name: first_name == freezed
           ? _value.first_name
@@ -177,7 +177,7 @@ class _$_ProfileModel implements _ProfileModel {
   _$_ProfileModel(
       {this.bree,
       this.bree_token,
-      this.emaill,
+      this.email,
       this.first_name,
       this.image_profile,
       this.last_name,
@@ -191,7 +191,7 @@ class _$_ProfileModel implements _ProfileModel {
   @override
   final String? bree_token;
   @override
-  final String? emaill;
+  final String? email;
   @override
   final String? first_name;
   @override
@@ -203,7 +203,7 @@ class _$_ProfileModel implements _ProfileModel {
 
   @override
   String toString() {
-    return 'ProfileModel(bree: $bree, bree_token: $bree_token, emaill: $emaill, first_name: $first_name, image_profile: $image_profile, last_name: $last_name, pincode: $pincode)';
+    return 'ProfileModel(bree: $bree, bree_token: $bree_token, email: $email, first_name: $first_name, image_profile: $image_profile, last_name: $last_name, pincode: $pincode)';
   }
 
   @override
@@ -214,7 +214,7 @@ class _$_ProfileModel implements _ProfileModel {
             const DeepCollectionEquality().equals(other.bree, bree) &&
             const DeepCollectionEquality()
                 .equals(other.bree_token, bree_token) &&
-            const DeepCollectionEquality().equals(other.emaill, emaill) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.first_name, first_name) &&
             const DeepCollectionEquality()
@@ -229,7 +229,7 @@ class _$_ProfileModel implements _ProfileModel {
       runtimeType,
       const DeepCollectionEquality().hash(bree),
       const DeepCollectionEquality().hash(bree_token),
-      const DeepCollectionEquality().hash(emaill),
+      const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(first_name),
       const DeepCollectionEquality().hash(image_profile),
       const DeepCollectionEquality().hash(last_name),
@@ -252,7 +252,7 @@ abstract class _ProfileModel implements ProfileModel {
   factory _ProfileModel(
       {final String? bree,
       final String? bree_token,
-      final String? emaill,
+      final String? email,
       final String? first_name,
       final String? image_profile,
       final String? last_name,
@@ -266,7 +266,7 @@ abstract class _ProfileModel implements ProfileModel {
   @override
   String? get bree_token;
   @override
-  String? get emaill;
+  String? get email;
   @override
   String? get first_name;
   @override

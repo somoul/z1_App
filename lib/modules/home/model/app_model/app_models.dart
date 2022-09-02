@@ -11,6 +11,7 @@ class HomeModel with _$HomeModel {
     String? app_link,
     String? link_image,
     String? app_color,
+    bool?  isUser,
   
   }) = _HomeModel;
 

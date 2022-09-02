@@ -10,13 +10,13 @@ class LocalData {
   static Future<String> getCurrentUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String value = pref.getString('current_user') ?? "";
-    _profileController.token.value=value;
+    // _profileController.token.value=value;
     debugPrint('================ value11:$value');
     return value;
   }
 
   static Future<void> storeCurrentUser(String token) async {
-    _profileController.token.value=token;
+    // _profileController.token.value=token;
     debugPrint('================ value222:$token');
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('current_user', token);

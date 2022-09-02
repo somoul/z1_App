@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../../../widgets/custom_buttom.dart';
 import '../../app_color/app_colors.dart';
 import '../controller/login_controller.dart';
 
@@ -113,7 +114,6 @@ class SignInScreen extends StatelessWidget {
                               //     ),
                               //   ),
                               // ),
-                           
                             ],
                           ),
                         ),
@@ -304,25 +304,25 @@ class SignInScreen extends StatelessWidget {
                               ),
                             ),
                             const Spacer(),
-                            GestureDetector(
-                              onTap: () {
-                                context.navigateNamedTo('pinCodeScreen');
-                                //context.navigateNamedTo('/test');
-                              },
-                              child: Center(
-                                child: Text(
-                                  'Pin code',
-                                  // "Forgot Password",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline6!
-                                      .copyWith(
-                                          color: AppColor.descriptionColor,
-                                          fontSize: 16.5,
-                                          fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     context.navigateNamedTo('pinCodeScreen');
+                            //     //context.navigateNamedTo('/test');
+                            //   },
+                            //   child: Center(
+                            //     child: Text(
+                            //       'Pin code',
+                            //       // "Forgot Password",
+                            //       style: Theme.of(context)
+                            //           .textTheme
+                            //           .headline6!
+                            //           .copyWith(
+                            //               color: AppColor.descriptionColor,
+                            //               fontSize: 16.5,
+                            //               fontWeight: FontWeight.w500),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -332,8 +332,8 @@ class SignInScreen extends StatelessWidget {
                           left: 20,
                           right: 20,
                         ),
-                        child: GestureDetector(
-                          onTap: () {
+                        child: CustomButton(
+                           onTap: () {
                             _loginController.isEmailValid.value &&
                                     _loginController
                                             .emailTextEditingController.value !=
@@ -354,12 +354,12 @@ class SignInScreen extends StatelessWidget {
                                     false &&
                                 _loginController.isObscureTextEmail.value ==
                                     false) {
-                                      debugPrint('========1111');
+                              debugPrint('========1111');
                               _loginController.login(
                                   _emailTextEditingController.text,
                                   _passwordTextEditingController.text,
                                   context);
-                                  debugPrint('========222');
+                              debugPrint('========222');
                               // context.navigateNamedTo('/test');
                               // _loginController
                               //     .signInController(
@@ -373,29 +373,72 @@ class SignInScreen extends StatelessWidget {
                               // }).catchError((e) => print(e));
                             } else {}
                           },
-                          child: Container(
-                            height: 55,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: AppColor.buttonColor,
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(15),
-                                    topRight: Radius.circular(15),
-                                    bottomLeft: Radius.circular(15),
-                                    bottomRight: Radius.circular(15))),
-                            child: Center(
-                              child: Text(
-                                "Login",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6!
-                                    .copyWith(
-                                        color: AppColor.textColor,
-                                        fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
+                          title: 'Login',
                         ),
+                        // GestureDetector(
+                          // onTap: () {
+                          //   _loginController.isEmailValid.value &&
+                          //           _loginController
+                          //                   .emailTextEditingController.value !=
+                          //               ''
+                          //       ? _loginController.isObscureTextEmail.value =
+                          //           false
+                          //       : _loginController.isObscureTextEmail.value =
+                          //           true;
+                          //   _loginController.passWordTextEditingController.value
+                          //               .length >=
+                          //           8
+                          //       ? _loginController.isObscureTextPassword.value =
+                          //           false
+                          //       : _loginController.isObscureTextPassword.value =
+                          //           true;
+
+                          //   if (_loginController.isObscureTextPassword.value ==
+                          //           false &&
+                          //       _loginController.isObscureTextEmail.value ==
+                          //           false) {
+                          //     debugPrint('========1111');
+                          //     _loginController.login(
+                          //         _emailTextEditingController.text,
+                          //         _passwordTextEditingController.text,
+                          //         context);
+                          //     debugPrint('========222');
+                          //     // context.navigateNamedTo('/test');
+                          //     // _loginController
+                          //     //     .signInController(
+                          //     //         _emailTextEditingController.text,
+                          //     //         _passwordTextEditingController.text)
+                          //     //     .then((user) {
+                          //     //   debugPrint(
+                          //     //       '========Show Data from Login with firebase : $user==============');
+                          //     //   //context.navigateNamedTo('/test');
+                          //     //   //Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomePage()));
+                          //     // }).catchError((e) => print(e));
+                          //   } else {}
+                          // },
+                        //   child: Container(
+                        //     height: 55,
+                        //     width: double.infinity,
+                        //     decoration: BoxDecoration(
+                        //         color: AppColor.buttonColor,
+                        //         borderRadius: const BorderRadius.only(
+                        //             topLeft: Radius.circular(15),
+                        //             topRight: Radius.circular(15),
+                        //             bottomLeft: Radius.circular(15),
+                        //             bottomRight: Radius.circular(15))),
+                        //     child: Center(
+                        //       child: Text(
+                        //         "Login",
+                        //         style: Theme.of(context)
+                        //             .textTheme
+                        //             .headline6!
+                        //             .copyWith(
+                        //                 color: AppColor.textColor,
+                        //                 fontWeight: FontWeight.w500),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(

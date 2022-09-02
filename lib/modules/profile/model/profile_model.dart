@@ -8,7 +8,7 @@ class ProfileModel with _$ProfileModel {
   factory ProfileModel({
     String? bree,
     String? bree_token,
-    String? emaill,
+    String? email,
     String? first_name,
     String? image_profile,
     String? last_name,

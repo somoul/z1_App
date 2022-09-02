@@ -11,6 +11,7 @@ _$_HomeModel _$$_HomeModelFromJson(Map<String, dynamic> json) => _$_HomeModel(
       app_link: json['app_link'] as String?,
       link_image: json['link_image'] as String?,
       app_color: json['app_color'] as String?,
+      isUser: json['isUser'] as bool?,
     );
 
 Map<String, dynamic> _$$_HomeModelToJson(_$_HomeModel instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$_HomeModelToJson(_$_HomeModel instance) =>
       'app_link': instance.app_link,
       'link_image': instance.link_image,
       'app_color': instance.app_color,
+      'isUser': instance.isUser,
     };
