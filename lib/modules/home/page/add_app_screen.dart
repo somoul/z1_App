@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:z1_app/modules/home/controler/home_comtroller.dart';
@@ -53,6 +54,16 @@ class _AddAppScreenState extends State<AddAppScreen> {
 
   @override
   void initState() {
+    _homeController.isLoding.value = false;
+    _homeController.isSelecPassLinkImage.value = true;
+    _homeController.isNameAppEditingController.value = false;
+    _homeController.isLinkAppEditingController.value = false;
+    _homeController.isColorAppEditingController.value = false;
+    _homeController.isDetailApp.value = false;
+    _homeController.isImagePassLinkImage.value = false;
+    _homeController.detailApp.value = '';
+    imageFile = null;
+
     _dropdownTestItems = buildDropdownTestItems(_testList);
     super.initState();
   }
@@ -96,6 +107,47 @@ class _AddAppScreenState extends State<AddAppScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                if (nameAppEditingController.text.isNotEmpty ||
+                        linkAppEditingController.text.isNotEmpty ||
+                        colorAppEditingController.text.isNotEmpty ||
+                        _homeController.detailApp.value.isNotEmpty ||
+                        addImageAppEditingController.text.isNotEmpty
+                    //&& _homeController.imageApp.value != ''
+                    ) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 100),
+                          child: CupertinoAlertDialog(
+                            title: Text('Discard changes'),
+                            content: Text(
+                                'Are you sure you want to discard the changes you made'),
+                            actions: <Widget>[
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                    //action code for "Yes" button
+                                  },
+                                  child: Text('Yes')),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context); //close Dialog
+                                },
+                                child: Text('cancel'),
+                              )
+                            ],
+                          ),
+                        );
+                      });
+                } else {
+                  Navigator.pop(context);
+                }
+              },
+              icon: Icon(Icons.arrow_back)),
           title: Text(
             'AddApp',
             style: Theme.of(context).textTheme.headline5!.copyWith(
@@ -733,9 +785,9 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                                           _homeController
                                                               .imagePassLinkImage
                                                               .value = '';
-                                                          _homeController
-                                                              .getImageStorage(
-                                                                  value);
+                                                          // _homeController
+                                                          //     .getImageStorage(
+                                                          //         value);
                                                         });
                                                       },
                                                     ),
@@ -1057,8 +1109,8 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                                                           () {
                                                                         imageFile =
                                                                             value;
-                                                                        _homeController
-                                                                            .getImageStorage(value);
+                                                                        // _homeController
+                                                                        //     .getImageStorage(value);
                                                                         debugPrint(
                                                                             '========WOrk 2==========');
                                                                         _homeController
@@ -1172,43 +1224,80 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                 _homeController
                                     .isColorAppEditingController.value = true;
                               }
-                              if (_homeController.detailApp.value.isEmpty) {
+                              if (_homeController.detailApp.value == '') {
                                 _homeController.isDetailApp.value = true;
                               }
-                              if (addImageAppEditingController.text.isEmpty ||
-                                  _homeController.imageApp.value == '') {
+                              if (addImageAppEditingController.text.isEmpty
+                                  // &&
+                                  //     _homeController.imageApp.value == ''
+                                  ) {
                                 _homeController.isImagePassLinkImage.value =
                                     true;
                               }
-                              if (nameAppEditingController.text.isNotEmpty &&
-                                  linkAppEditingController.text.isNotEmpty &&
-                                  colorAppEditingController.text.isNotEmpty &&
-                                  _homeController.detailApp.value.isNotEmpty &&
-                                  addImageAppEditingController.text.isNotEmpty && _homeController.imageApp.value != '') {
-                                _homeController.isLoding.value = true;
-                                myData = {
-                                  "app_colo": colorAppEditingController.text,
-                                  'app_link': linkAppEditingController.text, 
-                                  //'online-quiz-75798.firebaseapp.com',
-                                  'app_name': nameAppEditingController
-                                      .text, //'test Add22',
-                                  'isUser': true,
-                                  //_homeController.isSelecOption.value, //true,
-                                  'link_image':
-                                      _homeController.imageApp.value != ''
-                                          ? _homeController.imageApp.value
-                                          : addImageAppEditingController.text,
-                                  // 'https://firebasestorage.googleapis.com/v0/b/z1-app-a10ff.appspot.com/o/app_icon%2Fic_launcher.png?alt=media&token=36e2a95d-c989-42a4-9792-f2dfad770987'
-                                };
-                                collection.add(myData) // <-- Your data
-                                    .then((_) {
-                                  _homeController.isLoding.value = false;
-                                  Navigator.pop(context);
+                              if (imageFile != null) {
+                                // _homeController.isLoding.value = true;
+                                _homeController
+                                    .getImageStorage(imageFile!)
+                                    .then((value) {
+                                  myData = {
+                                    "app_colo": colorAppEditingController.text,
+                                    'app_link': linkAppEditingController.text,
+                                    //'online-quiz-75798.firebaseapp.com',
+                                    'app_name': nameAppEditingController
+                                        .text, //'test Add22',
+                                    'isUser': true,
+                                    //_homeController.isSelecOption.value, //true,
+                                    'link_image': value,
+                                    // 'https://firebasestorage.googleapis.com/v0/b/z1-app-a10ff.appspot.com/o/app_icon%2Fic_launcher.png?alt=media&token=36e2a95d-c989-42a4-9792-f2dfad770987'
+                                  };
+                                  collection.add(myData) // <-- Your data
+                                      .then((_) {
+                                    _homeController.isLoding.value = false;
+                                    Navigator.pop(context);
 
-                                  debugPrint('Added');
-                                }).catchError((error) {
-                                  debugPrint('Add failed: $error');
+                                    debugPrint('Added');
+                                  }).catchError((error) {
+                                    debugPrint('Add failed: $error');
+                                  });
                                 });
+                              } else {
+                                if (nameAppEditingController.text.isNotEmpty &&
+                                        linkAppEditingController
+                                            .text.isNotEmpty &&
+                                        colorAppEditingController
+                                            .text.isNotEmpty &&
+                                        _homeController
+                                            .detailApp.value.isNotEmpty &&
+                                        addImageAppEditingController
+                                            .text.isNotEmpty
+                                    //&& _homeController.imageApp.value != ''
+                                    ) {
+                                  _homeController.isLoding.value = true;
+                                  myData = {
+                                    "app_colo": colorAppEditingController.text,
+                                    'app_link': linkAppEditingController.text,
+                                    //'online-quiz-75798.firebaseapp.com',
+                                    'app_name': nameAppEditingController
+                                        .text, //'test Add22',
+                                    'isUser': true,
+                                    //_homeController.isSelecOption.value, //true,
+                                    'link_image':
+                                        addImageAppEditingController.text,
+                                    // _homeController.imageApp.value != ''
+                                    //     ? _homeController.imageApp.value
+                                    //     : addImageAppEditingController.text,
+                                    // 'https://firebasestorage.googleapis.com/v0/b/z1-app-a10ff.appspot.com/o/app_icon%2Fic_launcher.png?alt=media&token=36e2a95d-c989-42a4-9792-f2dfad770987'
+                                  };
+                                  collection.add(myData) // <-- Your data
+                                      .then((_) {
+                                    _homeController.isLoding.value = false;
+                                    Navigator.pop(context);
+
+                                    debugPrint('Added');
+                                  }).catchError((error) {
+                                    debugPrint('Add failed: $error');
+                                  });
+                                }
                               }
                             },
                             title: 'Submit',

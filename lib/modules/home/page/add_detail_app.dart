@@ -12,7 +12,7 @@ class AddDetaillAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _homeController=Get.put(HomeController());
+    final _homeController = Get.put(HomeController());
     final maxLines = 11;
     return Scaffold(
       appBar: AppBar(
@@ -39,11 +39,9 @@ class AddDetaillAppScreen extends StatelessWidget {
                     fontSize: 14.5,
                     color: AppColor.descriptionColor,
                     fontWeight: FontWeight.w300), //TextStyle(),
-                onChanged: (value){
-                  _homeController.isDetailApp.value=value=='';
-                  _homeController.detailApp.value=value;
-                  
-
+                onChanged: (value) {
+                  _homeController.isDetailApp.value = value == '';
+                  _homeController.detailApp.value = value;
                 },
                 decoration: InputDecoration(
                   // labelText: 'Enter your Password',

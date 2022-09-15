@@ -14,7 +14,7 @@ class HomeController extends GetxController {
   final isLoding = false.obs;
   final bree = ''.obs;
   final bree_token = ''.obs;
-  final isLodingminiApp = false.obs;
+   final isLodingFileImage = false.obs;
   final imageApps = ''.obs;
   final picker = ImagePicker();
   final isSelecPassLinkImage = true.obs;
@@ -48,8 +48,9 @@ class HomeController extends GetxController {
     return image!;
   }
 
-  Future<void> getImageStorage(File fileImage) async {
-    // isLoding(true);
+  Future<String> getImageStorage(File fileImage) async {
+  isLoding(true);
+    isLodingFileImage(true);
     UploadTask? uploadTask;
     try {
       uploadTask = await storage
@@ -71,5 +72,6 @@ class HomeController extends GetxController {
     } on FirebaseException catch (error) {
       print(error);
     }
+    return imageApp.value;
   }
 }
