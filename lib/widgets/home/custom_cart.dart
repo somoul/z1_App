@@ -43,7 +43,7 @@ class CustomCart extends StatelessWidget {
                 // blurStyle:BlurStyle.outer
               ),
               BoxShadow(
-                color: Color(int.parse('0xff$colors')).withOpacity(0.3),
+                color: Color(int.parse('0xff$colors'),).withOpacity(0.3),
                 blurRadius: 10,
                 offset: Offset(6.5, -5.5),
                 blurStyle: BlurStyle.solid,

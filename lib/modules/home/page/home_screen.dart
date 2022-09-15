@@ -129,7 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: _homeController
                                   .homeListModel.value[index].link_image ??
                               '',
-                          colors: _homeController
+                          colors: 
+                          _homeController
                                   .homeListModel.value[index].app_color ??
                               '',
                           onTap: () async {

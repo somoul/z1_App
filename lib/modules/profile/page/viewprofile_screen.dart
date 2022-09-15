@@ -1,5 +1,9 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+
+
+import 'dart:io';
+
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,11 +14,13 @@ import '../../../widgets/custom_default_size_web.dart';
 import '../controller/profile_controller.dart';
 
 class ViewProfile extends StatelessWidget {
-  const ViewProfile({Key? key}) : super(key: key);
+  final String? imageView;
+  final File? imageFile;
+  const ViewProfile({Key? key,this.imageView,this.imageFile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _profileController = Get.put(ProfileController());
+    // final _profileController = Get.put(ProfileController());
     return CustomDefaultSizeWeb(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -28,12 +34,26 @@ class ViewProfile extends StatelessWidget {
                   itemCount: 1,
                   scrollPhysics: const BouncingScrollPhysics(),
                   builder: (BuildContext context, int index) {
-                    return PhotoViewGalleryPageOptions(
+                    return imageFile!=null? PhotoViewGalleryPageOptions(
                       minScale: PhotoViewComputedScale.contained,
                       maxScale: PhotoViewComputedScale.covered * 5,
-                      imageProvider: NetworkImage(
-                        '${_profileController.profileModel.value.image_profile}',
-                      ),
+                      imageProvider:FileImage(imageFile!)
+                     // :NetworkImage(imageView!)
+                        //'${_profileController.profileModel.value.image_profile}',
+                      // ),
+                    ):imageView!=null?PhotoViewGalleryPageOptions(
+                      minScale: PhotoViewComputedScale.contained,
+                      maxScale: PhotoViewComputedScale.covered * 5,
+                      imageProvider:NetworkImage(imageView!)
+                        //'${_profileController.profileModel.value.image_profile}',
+                      // ),
+                    ): PhotoViewGalleryPageOptions(
+                      minScale: PhotoViewComputedScale.contained,
+                      maxScale: PhotoViewComputedScale.covered * 5,
+                      imageProvider:const NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZOXOoSq30cRoPNDUnFWywE5igPKLjE5-hcQ&usqp=CAU')
+                     // :NetworkImage(imageView!)
+                        //'${_profileController.profileModel.value.image_profile}',
+                      // ),
                     );
                   },
                   pageController: PageController(viewportFraction :1,keepPage:true,initialPage:1),

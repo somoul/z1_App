@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:z1_app/modules/profile/controller/profile_controller.dart';
+import 'package:z1_app/modules/profile/page/viewprofile_screen.dart';
 import 'package:z1_app/utils/pincode/controller/pincode_controller.dart';
 
 import '../../../utils/app_color/app_colors.dart';
@@ -87,7 +88,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: GestureDetector(
                               //viewProfile
                               onTap: () {
-                                context.navigateNamedTo('viewProfile');
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ViewProfile(
+                                          imageView: _profileController
+                                              .profileModel
+                                              .value
+                                              .image_profile)),
+                                );
+                                // context.navigateNamedTo('viewProfile');
                               },
                               child: Container(
                                 height: 20,
