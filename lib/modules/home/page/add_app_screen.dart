@@ -124,7 +124,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
                           child: CupertinoAlertDialog(
                             title: Text('Discard changes'),
                             content: Text(
-                                'Are you sure you want to discard the changes you made'),
+                                'Are you sure you want to discard the changes you made ?'),
                             actions: <Widget>[
                               TextButton(
                                   onPressed: () {
