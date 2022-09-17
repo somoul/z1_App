@@ -1,23 +1,13 @@
 // ignore_for_file: unused_local_variable, no_leading_underscores_for_local_identifiers, invalid_use_of_protected_member, deprecated_member_use, await_only_futures
 
-import 'dart:async';
-
-import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:quick_actions/quick_actions.dart';
 
-import '../../../utils/app_color/app_colors.dart';
-import '../../../utils/mini_show_app/mini_app_screen.dart';
-import '../../../utils/pincode/controller/pincode_controller.dart';
 import '../../../utils/stolocal_data/local_data.dart';
+import '../../../widgets/common/custom_textformfield.dart';
 import '../../../widgets/custom_default_size_web.dart';
-import '../../../widgets/home/custom_cart.dart';
-import '../../controler_bottom_bar.dart/controller_bar.dart';
-import '../controler/home_comtroller.dart';
-import '../model/app_model/app_models.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,13 +18,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final cameraController = MobileScannerController();
-  final _homeController = Get.put(HomeController());
-  final _bottomBarController = Get.put(BottomBarController());
-  final _pinCodeController = Get.put(PinCodeController());
+  final QuickActions quickActions = const QuickActions();
+
   @override
   void initState() {
     LocalData.getCurrentUser();
-    debugPrint('=======snapshot.data!======:');
+    quickActions.initialize((shortcutType) {
+      print(shortcutType);
+      if (shortcutType == 'qr') {
+        context.go('/qr');
+      }
+
+      // More handling code...
+    });
+    quickActions.setShortcutItems(<ShortcutItem>[
+      const ShortcutItem(
+          type: 'qr', localizedTitle: 'Scan Qr Code', icon: 'Icons.add_circle'),
+    ]);
     super.initState();
   }
 
@@ -42,18 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return CustomDefaultSizeWeb(
       child: Scaffold(
-        backgroundColor:
-            Colors.white, //AppColor.backgroundColor, // Colors.black,
-        extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: AppColor.buttonColor.withOpacity(0.8),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 3,top: 6),
-              child: IconButton(onPressed:(){//addAppScreen
-              context.navigateNamedTo('addAppScreen');
-
-              }, icon:const Icon(Icons.add_circle,size: 27,)),
+              padding: const EdgeInsets.only(right: 3, top: 6),
+              child: IconButton(
+                  onPressed: () {
+                    //addAppScreen
+                    // context.navigateNamedTo('addAppScreen');
+                  },
+                  icon: const Icon(
+                    Icons.add_circle,
+                    size: 27,
+                  )),
             )
             // Padding(
             //   padding: const EdgeInsets.only(
@@ -62,8 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
             //   ),
             //   child: GestureDetector(
             //     onTap: () {
-                  // context.navigateNamedTo('qrcodeScreen');
-                  // //  context.navigateNamedTo('scanqrcodesceen');
+            // context.navigateNamedTo('qrcodeScreen');
+            // //  context.navigateNamedTo('scanqrcodesceen');
             //     },
             //     child: Image.asset(
             //       'asset/image/image_png/qr_code.png',
@@ -72,80 +73,91 @@ class _HomeScreenState extends State<HomeScreen> {
             //     ),
             //   ),
             // ),
-         
           ],
           leading: Container(),
-          title: Text(
-            'Home',
-            style: Theme.of(context).textTheme.headline5!.copyWith(
-                fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500),
-          ),
+          title: Text('Home'),
         ),
-        body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance
-              .collection("app_list")
-              .where('isUser', isEqualTo: true)
-              .snapshots(),
-          builder: (
-            BuildContext context,
-            AsyncSnapshot<QuerySnapshot> snapshot,
-          ) {
-            try {
-              _homeController.homeListModel.value.clear();
-              var listApp = snapshot.data!.docs;
+        body:
+            // StreamBuilder<QuerySnapshot>(
+            //   stream: FirebaseFirestore.instance
+            //       .collection("app_list")
+            //       .where('isUser', isEqualTo: true)
+            //       .snapshots(),
+            //   builder: (
+            //     BuildContext context,
+            //     AsyncSnapshot<QuerySnapshot> snapshot,
+            //   ) {
+            //     try {
+            //       _homeController.homeListModel.value.clear();
+            //       var listApp = snapshot.data!.docs;
 
-              listApp.map((product) {
-                final item =
-                    HomeModel.fromJson(product.data() as Map<String, dynamic>);
-                _homeController.homeListModel.value.add(item);
-                debugPrint(
-                    '======  _homeController.homeListModel.value:${item}');
-              }).toList();
-            } catch (e) {
-              debugPrint("Catch Data:$e");
-            }
+            //       listApp.map((product) {
+            //         final item =
+            //             HomeModel.fromJson(product.data() as Map<String, dynamic>);
+            //         _homeController.homeListModel.value.add(item);
+            //         debugPrint('======  _homeController.homeListModel.value:$item');
+            //       }).toList();
+            //     } catch (e) {
+            //       debugPrint("Catch Data:$e");
+            //     }
 
-            return !snapshot.hasData
-                ? const Center(child: CircularProgressIndicator())
-                : GridView.builder(
-                    itemCount: _homeController.homeListModel.value.length,
-                    scrollDirection: Axis.vertical,
-                    padding: const EdgeInsets.only(
-                        left: 18, right: 23, bottom: 130, top: 125),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 18,
-                      childAspectRatio: 1,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      //  DocumentSnapshot data = snapshot.data!.docs[index];
+            //     return !snapshot.hasData
+            //         ? const Center(child: CircularProgressIndicator())
+            //         : GridView.builder(
+            //             itemCount: _homeController.homeListModel.value.length,
+            //             scrollDirection: Axis.vertical,
+            //             padding: const EdgeInsets.only(
+            //                 left: 18, right: 23, bottom: 130, top: 125),
+            //             gridDelegate:
+            //                 const SliverGridDelegateWithFixedCrossAxisCount(
+            //               crossAxisCount: 4,
+            //               mainAxisSpacing: 20,
+            //               crossAxisSpacing: 18,
+            //               childAspectRatio: 1,
+            //             ),
+            //             itemBuilder: (BuildContext context, int index) {
+            //               //  DocumentSnapshot data = snapshot.data!.docs[index];
 
-                      return CustomCart(
-                          title: _homeController
-                                  .homeListModel.value[index].app_name ??
-                              '',
-                          image: _homeController
-                                  .homeListModel.value[index].link_image ??
-                              '',
-                          colors: 
-                          _homeController
-                                  .homeListModel.value[index].app_color ??
-                              '',
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MiniAppScreen(
-                                        linkApp:
-                                            '${_homeController.homeListModel[index].app_link}',
-                                      )),
-                            );
-                          });
-                    },
-                  );
-          },
+            //               return CustomCart(
+            //                   title: _homeController
+            //                           .homeListModel.value[index].app_name ??
+            //                       '',
+            //                   image: _homeController
+            //                           .homeListModel.value[index].link_image ??
+            //                       '',
+            //                   colors: _homeController
+            //                           .homeListModel.value[index].app_color ??
+            //                       '',
+            //                   onTap: () async {
+            //                     await Navigator.push(
+            //                       context,
+            //                       MaterialPageRoute(
+            //                           builder: (context) => MiniAppScreen(
+            //                                 linkApp:
+            //                                     '${_homeController.homeListModel[index].app_link}',
+            //                               )),
+            //                     );
+            //                   });
+            //             },
+            //           );
+            //   },
+            // ),
+            Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomTextFormField(
+              hintText: 'Input Hint Text',
+              validated: true,
+            ),
+            CustomTextFormField(
+              hintText: 'Input Hint Text',
+              validated: true,
+            ),
+            CustomTextFormField(
+              hintText: 'Input Hint Text',
+              validated: true,
+            ),
+          ],
         ),
       ),
     );

@@ -2,15 +2,12 @@
 
 import 'dart:async';
 
-import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:z1_app/configs/router/router.dart';
 import 'package:z1_app/utils/pincode/controller/pincode_controller.dart';
 
-import '../modules/home/controler/home_comtroller.dart';
-import '../modules/profile/controller/profile_controller.dart';
 import '../utils/stolocal_data/local_data.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,7 +19,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   String token = '';
-  final _pincodeController=Get.put(PinCodeController());
+  final _pincodeController = Get.put(PinCodeController());
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
@@ -49,10 +46,10 @@ class _SplashScreenState extends State<SplashScreen> {
         // Timer(const Duration(seconds: 0), () async {
         //  // await context.navigateNamedTo("");
         // });
-        _pincodeController.isSelectToken.value=true;
-        context.navigateNamedTo('pinCodeScreen');
+        _pincodeController.isSelectToken.value = true;
+        context.go(ScreenPaths.home);
       } else {
-        context.navigateNamedTo('onboardingScreen');
+        context.go(ScreenPaths.home);
       }
     });
     super.initState();
@@ -71,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(top: 60),
-              child: Container(
+              child: SizedBox(
                   height: 200,
                   width: 200,
                   child: Image.asset(

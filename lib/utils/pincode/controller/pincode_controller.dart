@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,8 +24,8 @@ class PinCodeController extends GetxController {
 //  Future<void> lognInPincode(String pincode, BuildContext context) async {
 //     isLoding(true);
 
-    // var collection = FirebaseFirestore.instance.collection('user');
-    // var querySnapshot = await collection.get();
+  // var collection = FirebaseFirestore.instance.collection('user');
+  // var querySnapshot = await collection.get();
 
   // for (var queryDocumentSnapshot in querySnapshot.docs) {
   //   Map<String, dynamic> data = queryDocumentSnapshot.data();
@@ -80,7 +79,7 @@ class PinCodeController extends GetxController {
   Future<void> lognInPincode(String pincode, BuildContext context) async {
     stoToken.value = await LocalData.getCurrentUser();
     debugPrint('======== stoToken: ${stoToken.value}');
-     debugPrint('======== isSelectToken: ${isSelectToken.value}');
+    debugPrint('======== isSelectToken: ${isSelectToken.value}');
     if (isSelectToken.value == true) {
       var querySnapshot = await collection.doc(stoToken.value).get();
       debugPrint('======== user :${querySnapshot['pincode']}');

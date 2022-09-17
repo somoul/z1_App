@@ -1,12 +1,9 @@
 // import 'package:auto_route/auto_route.dart';
 // ignore_for_file: unnecessary_null_comparison, prefer_final_fields, prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers, prefer_const_constructors, unrelated_type_equality_checks
 
-import 'dart:convert';
-
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +13,6 @@ import 'package:z1_app/modules/home/controler/home_comtroller.dart';
 import '../../../utils/app_color/app_colors.dart';
 import '../../../widgets/custom_buttom.dart';
 import '../../../widgets/custom_loding.dart';
-import '../../../widgets/customtextfield.dart';
 import '../../../widgets/customvalidate.dart';
 import '../../profile/page/viewprofile_screen.dart';
 import 'add_detail_app.dart';

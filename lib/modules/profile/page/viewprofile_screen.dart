@@ -1,22 +1,19 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
-
-
 import 'dart:io';
 
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import '../../../widgets/custom_default_size_web.dart';
-import '../controller/profile_controller.dart';
 
 class ViewProfile extends StatelessWidget {
   final String? imageView;
   final File? imageFile;
-  const ViewProfile({Key? key,this.imageView,this.imageFile}) : super(key: key);
+  const ViewProfile({Key? key, this.imageView, this.imageFile})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,29 +31,35 @@ class ViewProfile extends StatelessWidget {
                   itemCount: 1,
                   scrollPhysics: const BouncingScrollPhysics(),
                   builder: (BuildContext context, int index) {
-                    return imageFile!=null? PhotoViewGalleryPageOptions(
-                      minScale: PhotoViewComputedScale.contained,
-                      maxScale: PhotoViewComputedScale.covered * 5,
-                      imageProvider:FileImage(imageFile!)
-                     // :NetworkImage(imageView!)
-                        //'${_profileController.profileModel.value.image_profile}',
-                      // ),
-                    ):imageView!=null?PhotoViewGalleryPageOptions(
-                      minScale: PhotoViewComputedScale.contained,
-                      maxScale: PhotoViewComputedScale.covered * 5,
-                      imageProvider:NetworkImage(imageView!)
-                        //'${_profileController.profileModel.value.image_profile}',
-                      // ),
-                    ): PhotoViewGalleryPageOptions(
-                      minScale: PhotoViewComputedScale.contained,
-                      maxScale: PhotoViewComputedScale.covered * 5,
-                      imageProvider:const NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZOXOoSq30cRoPNDUnFWywE5igPKLjE5-hcQ&usqp=CAU')
-                     // :NetworkImage(imageView!)
-                        //'${_profileController.profileModel.value.image_profile}',
-                      // ),
-                    );
+                    return imageFile != null
+                        ? PhotoViewGalleryPageOptions(
+                            minScale: PhotoViewComputedScale.contained,
+                            maxScale: PhotoViewComputedScale.covered * 5,
+                            imageProvider: FileImage(imageFile!)
+                            // :NetworkImage(imageView!)
+                            //'${_profileController.profileModel.value.image_profile}',
+                            // ),
+                            )
+                        : imageView != null
+                            ? PhotoViewGalleryPageOptions(
+                                minScale: PhotoViewComputedScale.contained,
+                                maxScale: PhotoViewComputedScale.covered * 5,
+                                imageProvider: NetworkImage(imageView!)
+                                //'${_profileController.profileModel.value.image_profile}',
+                                // ),
+                                )
+                            : PhotoViewGalleryPageOptions(
+                                minScale: PhotoViewComputedScale.contained,
+                                maxScale: PhotoViewComputedScale.covered * 5,
+                                imageProvider: const NetworkImage(
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZOXOoSq30cRoPNDUnFWywE5igPKLjE5-hcQ&usqp=CAU')
+                                // :NetworkImage(imageView!)
+                                //'${_profileController.profileModel.value.image_profile}',
+                                // ),
+                                );
                   },
-                  pageController: PageController(viewportFraction :1,keepPage:true,initialPage:1),
+                  pageController: PageController(
+                      viewportFraction: 1, keepPage: true, initialPage: 1),
                   loadingBuilder: (context, event) => const Center(
                       child: Center(
                     child: Padding(

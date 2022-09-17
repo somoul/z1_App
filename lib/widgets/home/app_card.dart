@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import '../../configs/app_constant.dart';
+import '../../configs/theme/app_constant.dart';
 
 class AppCard extends StatelessWidget {
   final String? title;

@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:z1_app/utils/app_color/app_colors.dart';
 
 // import '../../../modules/bottom_bar.dart';
@@ -19,7 +17,7 @@ class LoginQrCodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginController = Get.put(LoginController());
-    QRViewController? _qrViewController;
+    // QRViewController? _qrViewController;
     final cameraController = MobileScannerController();
     bool? isFlashOn = false;
     // debugPrint('====== Show cameraController :$cameraController====');
@@ -67,10 +65,9 @@ class LoginQrCodeScreen extends StatelessWidget {
                                         onTap: () {
                                           //pinCodeScreen
                                           // cameraController.dispose();
-                                              context.popRoute();
+                                          context.popRoute();
                                           context
                                               .navigateNamedTo('signInScreen');
-                                      
                                         },
                                         child: Text(
                                           'Login',
@@ -128,9 +125,10 @@ class LoginQrCodeScreen extends StatelessWidget {
                               );
                             });
                       },
-                      child: const Icon(//
+                      child: const Icon(
+                        //
                         Icons.more_vert,
-                        color: Colors.white,//
+                        color: Colors.white, //
                         size: 35,
                       ))),
               Center(
@@ -205,35 +203,35 @@ class LoginQrCodeScreen extends StatelessWidget {
                     : Platform.isIOS
                         ? 150
                         : 100,
-                child:  Stack(
-                  alignment : AlignmentDirectional.center,
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 50,
-                          // color: Colors.blue.shade100,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.blue.shade100,
-                              boxShadow: const[
-                                 BoxShadow(
-                                    color: Colors.black87,
-                                    blurRadius: 1,
-                                    spreadRadius: 1.5)
-                              ]),
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                      // color: Colors.blue.shade100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.blue.shade100,
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.black87,
+                                blurRadius: 1,
+                                spreadRadius: 1.5)
+                          ]),
 
-                          child: Center(
-                            child: SvgPicture.asset(
-                              isFlashOn == true
-                                  ? 'asset/image/image_svg/flash.svg'
-                                  : 'asset/image/image_svg/flash.svg',
-                              height: 45,
-                              width: 45,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          isFlashOn == true
+                              ? 'asset/image/image_svg/flash.svg'
+                              : 'asset/image/image_svg/flash.svg',
+                          height: 45,
+                          width: 45,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 // Column(
                 //   children: [
                 //     GestureDetector(
@@ -261,8 +259,7 @@ class LoginQrCodeScreen extends StatelessWidget {
                 //             fontFamily: 'SFPRODISPLAYREGULAR',
                 //           ),
                 //     ),
-              
-              
+
                 //   ],
                 // ),
               ),

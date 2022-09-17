@@ -25,11 +25,17 @@ class _QrScreenState extends State<QrScreen> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Build App QR');
     //double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: const [
+          children: [
+            Container(
+              height: 200,
+              width: 200,
+              color: Colors.red,
+            ),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceAround,
             //   children: [

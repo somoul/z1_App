@@ -2,10 +2,8 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../modules/home/controler/home_comtroller.dart';
 import '../app_color/app_colors.dart';
 
 class MiniAppScreen extends StatefulWidget {

@@ -1,18 +1,11 @@
 // ignore_for_file: unused_label, use_build_context_synchronously, prefer_const_declarations
 
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../modules/profile/controller/profile_controller.dart';
 import '../../stolocal_data/local_data.dart';
-import '../../../modules/home/controler/home_comtroller.dart';
 
 class LoginController extends GetxController {
   final isCheckClick = false.obs;
@@ -30,7 +23,7 @@ class LoginController extends GetxController {
   // final _homeController = Get.put(HomeController());
   Future login(String email, password, BuildContext context) async {
     isLoding(true);
-   try {
+    try {
       // debugPrint('00====== Token1111 :');
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
@@ -51,7 +44,7 @@ class LoginController extends GetxController {
         // }
 
         // debugPrint('00====== Token : ${value}');
-       await LocalData.storeCurrentUser(value.user!.uid);
+        await LocalData.storeCurrentUser(value.user!.uid);
         context.navigateNamedTo('pinCodeScreen');
         // context.navigateNamedTo("");
       });
