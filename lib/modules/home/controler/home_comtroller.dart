@@ -14,7 +14,7 @@ class HomeController extends GetxController {
   final isLoding = false.obs;
   final bree = ''.obs;
   final bree_token = ''.obs;
-   final isLodingFileImage = false.obs;
+  final isLodingFileImage = false.obs;
   final imageApps = ''.obs;
   final picker = ImagePicker();
   final isSelecPassLinkImage = true.obs;
@@ -29,6 +29,12 @@ class HomeController extends GetxController {
   final nameimage = ''.obs;
   final isSelecOption = false.obs;
   final imageApp = ''.obs;
+// detail Screen
+  final indexAdddetaillsuccess = 1.obs;
+   List<TextEditingController> successTextEditingController=[];
+    List<TextEditingController> noSuccessTextEditingController=[];
+     List<int> listIndexAdddetaillsuccess=[];
+
   FirebaseStorage storage = FirebaseStorage.instance;
 
   File? image;
@@ -49,7 +55,7 @@ class HomeController extends GetxController {
   }
 
   Future<String> getImageStorage(File fileImage) async {
-  isLoding(true);
+    isLoding(true);
     isLodingFileImage(true);
     UploadTask? uploadTask;
     try {
@@ -60,7 +66,6 @@ class HomeController extends GetxController {
             fileImage,
           )
           .then((value) async {
-            
         // if(p.state == TaskState.success){
         debugPrint('=======Sucass  :$value');
         final imageUrl = await value.ref.getDownloadURL();
