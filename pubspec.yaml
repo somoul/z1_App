@@ -63,6 +63,7 @@ dependencies:
   snippet_coder_utils: ^1.0.12
   url_launcher: ^6.1.5
   webview_flutter: ^3.0.4
+  status_change: ^2.0.0
 dev_dependencies:
   auto_route_generator: ^4.0.0
   build_runner: ^2.1.7

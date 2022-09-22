@@ -20,6 +20,7 @@ class AddDetaillAppScreen extends StatelessWidget {
     int indexAdddetaillsuccess = 1;
 
     return Scaffold(
+       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'Adddetaill',

@@ -30,11 +30,18 @@ class HomeController extends GetxController {
   final isSelecOption = false.obs;
   final imageApp = ''.obs;
 // detail Screen
+  // final isSelecIndexOne=false.obs;
   final indexAdddetaillsuccess = 1.obs;
-   List<TextEditingController> successTextEditingController=[];
-    List<TextEditingController> noSuccessTextEditingController=[];
-     List<int> listIndexAdddetaillsuccess=[];
+  var successTextEditingController =
+      <TextEditingController>[TextEditingController()].obs;
+       var pandingTextEditingController =
+      <TextEditingController>[TextEditingController()].obs;
 
+// var listIndexAdddetaillPanding = <int>[1].obs;
+//   var listIndexAdddetaillSuccess = <int>[1].obs;
+  final indexsuccessTextEditingController = 0.obs;
+
+  // final test=TextEditingController();
   FirebaseStorage storage = FirebaseStorage.instance;
 
   File? image;

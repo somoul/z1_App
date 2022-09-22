@@ -102,6 +102,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.white,
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
@@ -196,7 +197,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        width: 255,
+                                        width: 247,
                                         height: 43,
                                         child: TextField(
                                           maxLines: 1,
@@ -288,14 +289,14 @@ class _AddAppScreenState extends State<AddAppScreen> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  left: 22,
+                                  left: 26,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 255,
+                                      width: 247,
                                       height: 43,
                                       child: TextField(
                                         maxLines: 1,
@@ -386,14 +387,14 @@ class _AddAppScreenState extends State<AddAppScreen> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  left: 16,
+                                  left: 18,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width: 255,
+                                      width: 248,
                                       height: 43,
                                       child: TextField(
                                         maxLines: 1,
@@ -476,7 +477,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 13),
                               child: Container(
-                                width: 255,
+                                width: 243,
                                 height: 43,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
@@ -603,7 +604,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                         );
                                       },
                                       child: Container(
-                                        width: 248,
+                                        width: 241,
                                         height: 43,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
@@ -870,7 +871,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                     )
                                   : Padding(
                                       padding: const EdgeInsets.only(
-                                        left: 19,
+                                        left: 15,
                                       ),
                                       child: Column(
                                         mainAxisAlignment:
@@ -879,7 +880,7 @@ class _AddAppScreenState extends State<AddAppScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            width: 250,
+                                            width: 240,
                                             height: 43,
                                             child: TextField(
                                               maxLines: 1,

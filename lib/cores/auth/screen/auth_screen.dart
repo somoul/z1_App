@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:z1_app/widgets/common/custom_textformfield.dart';
 
+import '../../../modules/home/page/home_screen.dart';
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
@@ -46,6 +48,15 @@ class _AuthScreenState extends State<AuthScreen> {
               focusNode: _lastNameNode,
               labelText: 'Lastname',
             ),
+         
+            TextButton(onPressed: 
+            (){
+                Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const HomeScreen()),
+  );
+            }, child: Text('Go'))
+         
           ],
         ),
       ),

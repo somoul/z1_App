@@ -1,13 +1,21 @@
 // ignore_for_file: unused_local_variable, no_leading_underscores_for_local_identifiers, invalid_use_of_protected_member, deprecated_member_use, await_only_futures
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:quick_actions/quick_actions.dart';
 
+import '../../../utils/mini_show_app/mini_app_screen.dart';
 import '../../../utils/stolocal_data/local_data.dart';
 import '../../../widgets/common/custom_textformfield.dart';
 import '../../../widgets/custom_default_size_web.dart';
+import '../../../widgets/home/custom_cart.dart';
+import '../controler/home_comtroller.dart';
+import '../model/app_model/app_models.dart';
+import 'add_app_screen.dart';
+import 'add_detail_app.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final cameraController = MobileScannerController();
   final QuickActions quickActions = const QuickActions();
-
+  final _homeController = Get.put(HomeController());
   @override
   void initState() {
     LocalData.getCurrentUser();
@@ -42,12 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return CustomDefaultSizeWeb(
       child: Scaffold(
+         backgroundColor: Colors.white,
         appBar: AppBar(
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 3, top: 6),
               child: IconButton(
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddAppScreen()),
+                    );
                     //addAppScreen
                     // context.navigateNamedTo('addAppScreen');
                   },
@@ -77,88 +91,87 @@ class _HomeScreenState extends State<HomeScreen> {
           leading: Container(),
           title: Text('Home'),
         ),
-        body:
-            // StreamBuilder<QuerySnapshot>(
-            //   stream: FirebaseFirestore.instance
-            //       .collection("app_list")
-            //       .where('isUser', isEqualTo: true)
-            //       .snapshots(),
-            //   builder: (
-            //     BuildContext context,
-            //     AsyncSnapshot<QuerySnapshot> snapshot,
-            //   ) {
-            //     try {
-            //       _homeController.homeListModel.value.clear();
-            //       var listApp = snapshot.data!.docs;
+        body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection("app_list")
+              .where('isUser', isEqualTo: true)
+              .snapshots(),
+          builder: (
+            BuildContext context,
+            AsyncSnapshot<QuerySnapshot> snapshot,
+          ) {
+            try {
+              _homeController.homeListModel.value.clear();
+              var listApp = snapshot.data!.docs;
 
-            //       listApp.map((product) {
-            //         final item =
-            //             HomeModel.fromJson(product.data() as Map<String, dynamic>);
-            //         _homeController.homeListModel.value.add(item);
-            //         debugPrint('======  _homeController.homeListModel.value:$item');
-            //       }).toList();
-            //     } catch (e) {
-            //       debugPrint("Catch Data:$e");
-            //     }
+              listApp.map((product) {
+                final item =
+                    HomeModel.fromJson(product.data() as Map<String, dynamic>);
+                _homeController.homeListModel.value.add(item);
+                debugPrint('======  _homeController.homeListModel.value:$item');
+              }).toList();
+            } catch (e) {
+              debugPrint("Catch Data:$e");
+            }
 
-            //     return !snapshot.hasData
-            //         ? const Center(child: CircularProgressIndicator())
-            //         : GridView.builder(
-            //             itemCount: _homeController.homeListModel.value.length,
-            //             scrollDirection: Axis.vertical,
-            //             padding: const EdgeInsets.only(
-            //                 left: 18, right: 23, bottom: 130, top: 125),
-            //             gridDelegate:
-            //                 const SliverGridDelegateWithFixedCrossAxisCount(
-            //               crossAxisCount: 4,
-            //               mainAxisSpacing: 20,
-            //               crossAxisSpacing: 18,
-            //               childAspectRatio: 1,
-            //             ),
-            //             itemBuilder: (BuildContext context, int index) {
-            //               //  DocumentSnapshot data = snapshot.data!.docs[index];
+            return !snapshot.hasData
+                ? const Center(child: CircularProgressIndicator())
+                : GridView.builder(
+                    itemCount: _homeController.homeListModel.value.length,
+                    scrollDirection: Axis.vertical,
+                    padding: const EdgeInsets.only(
+                        left: 18, right: 23, bottom: 130, top: 35),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 18,
+                      childAspectRatio: 1,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      //  DocumentSnapshot data = snapshot.data!.docs[index];
 
-            //               return CustomCart(
-            //                   title: _homeController
-            //                           .homeListModel.value[index].app_name ??
-            //                       '',
-            //                   image: _homeController
-            //                           .homeListModel.value[index].link_image ??
-            //                       '',
-            //                   colors: _homeController
-            //                           .homeListModel.value[index].app_color ??
-            //                       '',
-            //                   onTap: () async {
-            //                     await Navigator.push(
-            //                       context,
-            //                       MaterialPageRoute(
-            //                           builder: (context) => MiniAppScreen(
-            //                                 linkApp:
-            //                                     '${_homeController.homeListModel[index].app_link}',
-            //                               )),
-            //                     );
-            //                   });
-            //             },
-            //           );
-            //   },
-            // ),
-            Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomTextFormField(
-              hintText: 'Input Hint Text',
-              validated: true,
-            ),
-            CustomTextFormField(
-              hintText: 'Input Hint Text',
-              validated: true,
-            ),
-            CustomTextFormField(
-              hintText: 'Input Hint Text',
-              validated: true,
-            ),
-          ],
+                      return CustomCart(
+                          title: _homeController
+                                  .homeListModel.value[index].app_name ??
+                              '',
+                          image: _homeController
+                                  .homeListModel.value[index].link_image ??
+                              '',
+                          colors: _homeController
+                                  .homeListModel.value[index].app_color ??
+                              '',
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MiniAppScreen(
+                                        linkApp:
+                                            '${_homeController.homeListModel[index].app_link}',
+                                      )),
+                            );
+                          });
+                    },
+                  );
+          },
         ),
+        //     Column(
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: [
+        //     CustomTextFormField(
+        //       hintText: 'Input Hint Text',
+        //       validated: true,
+        //     ),
+        //     CustomTextFormField(
+        //       hintText: 'Input Hint Text',
+        //       validated: true,
+        //     ),
+        //     CustomTextFormField(
+        //       hintText: 'Input Hint Text',
+        //       validated: true,
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

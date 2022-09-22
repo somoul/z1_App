@@ -12,6 +12,9 @@
 
 // import 'controler_bottom_bar.dart/controller_bar.dart';
 // import 'home/controler/home_comtroller.dart';
+// import 'home/page/home_screen.dart';
+// import 'profile/page/profile_screen.dart';
+// import 'scan_qp_code/scan_qr_code_screen.dart';
 
 // class BottomBar extends StatefulWidget {
 //   //BottomBar
